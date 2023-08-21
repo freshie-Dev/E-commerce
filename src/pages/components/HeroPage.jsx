@@ -13,7 +13,7 @@ export default function HeroPage(props) {
                     <p>{data.message}</p>
                 </div>
                 <figure className='md:w-[50%] w-full flex justify-center items-center p-5'> 
-                    <img src="" alt="" className='w-[300px] h-[250px] bg-black'/>
+                    <img src="./" alt="" className='w-[300px] h-[250px] bg-black'/>
                 </figure>
 
             </div>

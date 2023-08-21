@@ -1,6 +1,6 @@
 const ProductReducer = (state , action) => {
    switch (action.type) {
-    case "GET-LOADING":
+    case "GET_LOADING":
         return { ...state, isLoading: true };
         break;
 
@@ -9,7 +9,7 @@ const ProductReducer = (state , action) => {
         break;
 
     case "SET_API_PRODUCTS":
-        const featureProducts = action.payload.filter((product) => product.rating > 4.9);
+        const featureProducts = action.payload.filter((product) => product.rating.rate > 4.5);
         return { ...state, isLoading: false, isError: false, products: action.payload, featuredProducts: featureProducts };
     default:
         break;

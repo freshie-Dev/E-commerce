@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import HeroPage from './components/HeroPage'
 import Services from './components/Services'
 import Footer from './components/Footer'
+import FeaturedProducts from './components/FeaturedProducts'
 
 export default function Home() {
   const data = {
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <Wrapper>
       <HeroPage data = {data}/>
+      <FeaturedProducts />
       <Services/>
     </Wrapper>
   )

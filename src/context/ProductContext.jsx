@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import { createContext, useState } from "react";
+
+
 const ProductContext = createContext({});
 export { ProductContext};
 import reducer from "../reducer/ProductReducer";
 
 const ProductProvider = ({children}) => {
-    const API = "https://dummyjson.com/products";
-    const [products, setProducts] = useState();
     const [featuredProducts, setFeaturedProducts] = useState();
 
     // const [state, dispatch] = useReducer(first, second, third)

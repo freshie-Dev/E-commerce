@@ -31,7 +31,8 @@ console.log(location.pathname)
   return (
           
     <ThemeProvider theme={theme}>
-      <Router>
+       <Router basename='/E-commerce'>
+      {/* <Router> */}
         <GlobalStyle/>
             <Navbar/>
             <Routes>
