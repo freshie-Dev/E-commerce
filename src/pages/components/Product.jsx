@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-// import SingleProduct from '../SingleProduct';
 
 export default function Product(props) {
     const {data} = props;

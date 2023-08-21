@@ -88,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.2rem;
       }
     
-      .button:hover {
+      .button:hover , .button:focus {
         animation: buttonAnimation 0.3s forwards;
       }
     
