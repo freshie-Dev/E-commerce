@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-input {
+/* input {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3) inset;
   transition: box-shadow 0.33s ease-in-out;
 }
@@ -22,4 +22,5 @@ input:focus {
 }
 .active {
     box-shadow: inset 0 0 0 2px #3b82f6;
-}
+} */
+

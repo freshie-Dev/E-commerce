@@ -125,6 +125,43 @@ const GlobalStyle = createGlobalStyle`
           box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff;
         }
       }
+      .div:hover , .div:focus {
+        animation: forwardAnimation 0.3s forwards;
+      }
+      
+      @keyframes forwardAnimation {
+        0% {
+          box-shadow: 2px 2px 10px #bebebe, -2px -2px 10px #ffffff;
+          
+        }
+        50% {
+          box-shadow: none;
+          font-weight: 400;
+        }
+        100% {
+          box-shadow: inset 2px 2px 5px #bebebe,
+                    inset -2px -2px 5px #ffffff;
+          font-weight: 300;
+        }
+      }
+      .div:not(:hover) {
+        animation: reverseAnimation 0.3s forwards;
+      }
+      
+      @keyframes reverseAnimation {
+        0% {
+          box-shadow: inset 2px 2px 5px #bebebe,
+                    inset -2px -2px 5px #ffffff;
+          font-weight: 300;
+        }
+        50% {
+          box-shadow: none;
+          font-weight: 400;
+        }
+        100% {
+          box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff;
+        }
+      }
 
       `;
 
