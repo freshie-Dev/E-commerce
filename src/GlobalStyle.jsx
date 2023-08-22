@@ -22,6 +22,14 @@ const GlobalStyle = createGlobalStyle`
       box-shadow: inset 5px 5px 10px #bebebe,
                   inset -5px -5px 10px #ffffff;
     }
+    .main-offset {
+      margin: 50px 0 50px;
+      padding: 50px;
+      border-radius: 50px;
+      background: #e0e0e0;
+      box-shadow:  5px 5px 10px #bebebe,
+                   -5px -5px 10px #ffffff;
+    }
     .color-gray{
         color: #434343;
     }
