@@ -1,15 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 import { createContext, useState } from "react";
 
 
 const ProductContext = createContext({});
-export { ProductContext};
+
 import reducer from "../reducer/ProductReducer";
 
 const ProductProvider = ({children}) => {
     const [featuredProducts, setFeaturedProducts] = useState();
-    const url = "https://fakestoreapi.com/products/" 
+    const url = "http://localhost:3000/products/" 
 
     // const [state, dispatch] = useReducer(first, second, third)
     const initialState = {
@@ -43,9 +43,8 @@ const ProductProvider = ({children}) => {
     const getSingleProduct = async (id) => {
         dispatch({type: "GET_SINGLE_LOADING"})
         try {
-            const response = await axios.get(`https://fakestoreapi.com/products/${id}`); // Use async/await
+            const response = await axios.get(`http://localhost:3000/products/${id}`); // Use async/await
             const data = await response.data;
-            const json =  JSON.stringify(data);
             // console.log(data)
             dispatch({type: "SET_API_SINGLE_PRODUCT", payload: data})
         } catch (error) {
@@ -61,12 +60,28 @@ const ProductProvider = ({children}) => {
         console.log("featured products " + state.featuredProducts)
     }, []);
     //& /////////////////////////////////////////
-
+    const [quantity, setQuantity] = React.useState(1);
+    const addQuantity = (value) => {
+        setQuantity(value + 1);
+    }
+    const subtractQuantity = (value) => {
+        if (value > 1) {
+            setQuantity(value - 1);
+        }
+    }
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct }}>
+        <ProductContext.Provider value={{...state, getSingleProduct,
+                                         quantity, addQuantity, subtractQuantity
+                                         
+                                        }}>
             {children}
         </ProductContext.Provider>
     )
 }
 
-export default ProductProvider;
+const ProductContextProvider = () => {
+    return ( useContext(ProductContext) )
+};
+
+export {ProductProvider};
+export default ProductContextProvider;

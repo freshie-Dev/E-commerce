@@ -16,6 +16,6 @@ export default function FormatPrice(props) {
     
 
   return (
-    <div>{pkrCurrency}</div>
+    <span>{pkrCurrency}</span>
   )
 }

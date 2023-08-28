@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
       }
     body {
-        padding: 3% 7%;
+        padding: 3% 3%;
         background-color: ${({theme}) => theme.colors.bgc};
         font-family: 'Ubuntu', sans-serif;
         text-gray-700

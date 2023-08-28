@@ -10,7 +10,7 @@ const ProductReducer = (state, action) => {
   
       case "SET_API_PRODUCTS":
         const featuredProducts = action.payload.filter(
-          (product) => product.rating.rate > 4.5
+          (product) => product.ratings.star > 4.5
         );
         return {
           ...state,

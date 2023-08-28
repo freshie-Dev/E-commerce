@@ -1,23 +1,34 @@
-import React, {useContext} from 'react'
-import { ProductContext } from '../context/ProductContext';
-import Product from './components/Product';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import ProductSection from './components/ProductSection';
+import FilterContextProvider from '../context/FilterContext';
+import ListProductSection from './components/ListProductSection';
+
+import styled from 'styled-components';
+
+// import gridview and listview icons from react icons
+import {FaTh, FaList} from 'react-icons/fa';
+import Sort from './components/Sort';
 
 export default function Products() {
-  const {isLoading, isError, products} = useContext(ProductContext);
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
+  const {gridView, setGridView, setListView} = FilterContextProvider();
+
   return (
-    <div className='main'>
-      <h1 className='text-3xl font-semibold text-center'>Featured Products</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {products.map((product, key) => {
-                return (
-                        <Product key ={product.id} data={product}/>
-                    )
-                })}
+    <Wrapper>
+    <div className='main grid md:grid-cols-[0.2fr,1fr] grid-cols-1'>
+      <div>
+        filter
+      </div>
+      <div>
+        <Sort />
+        <div className=''>
+          { gridView ? <ProductSection /> : <ListProductSection />}
         </div>
+      </div>
     </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+
+`
