@@ -21,29 +21,52 @@ const reducer = (state, action) => {
             const selectedSortValue = selectField.options[selectField.selectedIndex].value;
             return {
                 ...state,
-                sortingValue: selectedSortValue,
+                sortingValue: action.payload,
             }
         case "GET-SORTED-PRODUCTS":
             let newSortedProducts;
-            let tempSortedProducts = [...action.payload];
-            if(state.sortingValue === "lowest"){
+            const {sortingValue, filteredProducts} = state;
+            let tempSortedProducts = [...filteredProducts];
+            if(sortingValue === "lowest"){
                 newSortedProducts = tempSortedProducts.sort((a,b) => a.price - b.price)
             }
-            if(state.sortingValue === "highest"){
+            if(sortingValue === "highest"){
                 newSortedProducts = tempSortedProducts.sort((a,b) => b.price - a.price)
             }
-            if(state.sortingValue === "ascending"){
+            if(sortingValue === "ascending"){
                 newSortedProducts = tempSortedProducts.sort((a,b) => a.name.localeCompare(b.name))
             }
-            if(state.sortingValue === "descending"){
+            if(sortingValue === "descending"){
                 newSortedProducts = tempSortedProducts.sort((a,b) => b.name.localeCompare(a.name))
             }
-
-
         return {
             ...state,
             filteredProducts: newSortedProducts,
         }
+        case "UPDATE_FILTER_VALUE":
+            const {name, value} = action.payload;
+            
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    [name]: value,
+                }
+            }
+        case "GET_FILTERED_PRODUCTS":
+            let {allProducts, filters} = state;
+            const {text} = filters;
+            let tempProducts = [...allProducts];
+            if(text){
+                tempProducts = tempProducts.filter((product) => {
+                    return product.name.toLowerCase().includes(text.toLowerCase())
+                })
+            } 
+            console.log("temp products",tempProducts)
+            return {
+                ...state,
+                filteredProducts: tempProducts
+            }
         default:
             return state;
     }

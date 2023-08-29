@@ -24,7 +24,8 @@ export default function Sort() {
             const sortedProducts = filteredProducts.sort((a,b) => b.name.localeCompare(a.name))
             console.log(sortedProducts)
         }
-        sortProducts();
+        let value = e.target.value;
+        sortProducts(value);
     }
   return (
     <Wrapper>

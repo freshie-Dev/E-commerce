@@ -10,6 +10,9 @@ const initialState = {
     allProducts: [],
     gridView: true,
     sortingValue: "default",
+    filters: {
+        text: "",
+    }
 };
 
 const FilterProvider = ({ children }) => {
@@ -25,12 +28,20 @@ const FilterProvider = ({ children }) => {
         dispatch({ type: "SET_LIST_VIEW" });
     };
 
-    const sortProducts = () => {
-        dispatch({ type: "GET_SORT_VALUE" });
+    const sortProducts = (sortValue) => {
+        dispatch({ type: "GET_SORT_VALUE", payload: sortValue });
     };
+
+    const updateFilterValue = (event) => {
+        let {name, value} = event.target;
+        return dispatch({ type: "UPDATE_FILTER_VALUE", payload: {name, value} });
+    };
+
+
     useEffect(() => {
+        dispatch({ type: "GET_FILTERED_PRODUCTS" });
         dispatch({type: "GET-SORTED-PRODUCTS", payload: products});
-    }, [state.sortingValue]);
+    }, [products, state.sortingValue, state.filters]);
 
     useEffect(() => {
         dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
@@ -46,6 +57,7 @@ const FilterProvider = ({ children }) => {
                 setGridView,
                 setListView,
                 sortProducts,
+                updateFilterValue,
             }
             }>
             {children}

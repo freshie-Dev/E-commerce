@@ -3,7 +3,7 @@ import FilterContextProvider from '../../context/FilterContext';
 import Product from './Product'
 
 export default function ProductSection() {
-    const {filteredProducts, setSortedProducts} = FilterContextProvider();
+    const {filteredProducts} = FilterContextProvider();
   return (
     <div className='main '>
                 <h1 className='text-3xl font-semibold text-center'>Products</h1>

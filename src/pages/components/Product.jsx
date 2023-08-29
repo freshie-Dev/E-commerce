@@ -22,7 +22,7 @@ export default function Product(props) {
          
           <p className='text-sm text-gray-500'>{truncate(data.description, 100)}</p>
           <span className='py-1'>
-          <p className=' float-left'><StarRating rating = {data.ratings.stars}/></p>
+          <div className=' float-left'><StarRating rating = {data.ratings.stars}/></div>
           <p className=' float-right color-gray'>{`(${data.ratings.reviews})`}</p>
           </span>
       </NavLink>

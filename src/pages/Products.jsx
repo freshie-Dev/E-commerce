@@ -5,19 +5,16 @@ import ListProductSection from './components/ListProductSection';
 
 import styled from 'styled-components';
 
-// import gridview and listview icons from react icons
-import {FaTh, FaList} from 'react-icons/fa';
 import Sort from './components/Sort';
+import FilterSection from './components/FilterSection';
 
 export default function Products() {
-  const {gridView, setGridView, setListView} = FilterContextProvider();
+  const {gridView} = FilterContextProvider();
 
   return (
     <Wrapper>
     <div className='main grid md:grid-cols-[0.2fr,1fr] grid-cols-1'>
-      <div>
-        filter
-      </div>
+        <FilterSection />
       <div>
         <Sort />
         <div className=''>
