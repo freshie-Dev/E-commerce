@@ -6,27 +6,7 @@ import styled from 'styled-components';
 export default function Sort() {
     const {filteredProducts, gridView, setGridView, setListView, sortProducts} = FilterContextProvider();
 
-    const handleChange = (e) => {
-        console.log(e.target.value)
-        if(e.target.value === "lowest"){
-            const sortedProducts = filteredProducts.sort((a,b) => a.price - b.price)
-            console.log(sortedProducts)
-        }
-        if(e.target.value === "highest"){
-            const sortedProducts = filteredProducts.sort((a,b) => b.price - a.price)
-            console.log(sortedProducts)
-        }
-        if(e.target.value === "ascending"){
-            const sortedProducts = filteredProducts.sort((a,b) => a.name.localeCompare(b.name))
-            console.log(sortedProducts)
-        }
-        if(e.target.value === "descending"){
-            const sortedProducts = filteredProducts.sort((a,b) => b.name.localeCompare(a.name))
-            console.log(sortedProducts)
-        }
-        let value = e.target.value;
-        sortProducts(value);
-    }
+   
   return (
     <Wrapper>
         <div className='flex justify-between px-10'>
@@ -38,8 +18,8 @@ export default function Sort() {
                 <h1> {filteredProducts.length} Products found</h1>
             </div>
             <div>
-                <select onChange={handleChange} name="sort" id="sort" className='p-3 rounded-lg bg-[#4B5563] text-white font-[10px] hover:bg-white hover:text-[#4B5563] duration-300'>
-                    <option value="default">All</option>
+                <select onChange={sortProducts} name="sort" id="sort" className='p-3 rounded-lg bg-[#4B5563] text-white font-[10px] hover:bg-white hover:text-[#4B5563] duration-300'>
+                    <option value="all">All</option>
                     <option className='duration-300' value="lowest">Price : low to high</option>
                     <option className='duration-300' value="highest">Price : high to low</option>
                     <option className='duration-300' value="ascending">Asc : a to z</option>

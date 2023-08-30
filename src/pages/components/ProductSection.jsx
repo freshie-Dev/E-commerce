@@ -4,6 +4,13 @@ import Product from './Product'
 
 export default function ProductSection() {
     const {filteredProducts} = FilterContextProvider();
+    // if (filteredProducts.length < 1) {
+    //   return (
+    //     <div className='main '>
+    //             <h1 className='text-3xl font-semibold text-center'>No Products Matched Your Search</h1>
+    //         </div>
+    //   )
+    // }
   return (
     <div className='main '>
                 <h1 className='text-3xl font-semibold text-center'>Products</h1>

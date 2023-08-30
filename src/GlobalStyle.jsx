@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
         box-shadow: inset 2px 2px 5px #bebebe,
                     inset -2px -2px 5px #ffffff;
       }
+      .offset-shadow {
+        box-shadow:  2px 2px 5px #bebebe,
+                    -2px -2px 5px #ffffff;
+      }
     
       .input:hover, .input:focus {
         animation: inputAnimation 0.3s forwards;

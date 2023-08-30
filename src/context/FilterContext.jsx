@@ -12,6 +12,9 @@ const initialState = {
     sortingValue: "default",
     filters: {
         text: "",
+        category: "all",
+        colors: "all",
+        brand: "all",
     }
 };
 
@@ -28,21 +31,31 @@ const FilterProvider = ({ children }) => {
         dispatch({ type: "SET_LIST_VIEW" });
     };
 
-    const sortProducts = (sortValue) => {
+    const sortProducts = (event) => {
+        let {value: sortValue} = event.target;
         dispatch({ type: "GET_SORT_VALUE", payload: sortValue });
     };
 
-    const updateFilterValue = (event) => {
+    //! update the filter values
+    const updateFilterValue = (event)=> {
         let {name, value} = event.target;
-        return dispatch({ type: "UPDATE_FILTER_VALUE", payload: {name, value} });
-    };
+        console.log("name", name, "value", value)
 
+        return dispatch({type: "UPDATE_FILTERS_VALUE", payload: {name, value}});
+    }
+
+    //! load filtered products when the filters change or sorted products when the sorting value changes
+    useEffect(() => {
+        dispatch({type: "FILTER_PRODUCTS"})
+        // dispatch({type: "GET_SORTED_PRODUCTS"});
+    }, [products, state.filters]);
 
     useEffect(() => {
-        dispatch({ type: "GET_FILTERED_PRODUCTS" });
-        dispatch({type: "GET-SORTED-PRODUCTS", payload: products});
-    }, [products, state.sortingValue, state.filters]);
+        dispatch({type: "GET_SORTED_PRODUCTS"});
+    }, [ state.sortingValue])
+    
 
+    //! load all products for the gird and list view for the first time
     useEffect(() => {
         dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
     }, [products]);
@@ -57,7 +70,7 @@ const FilterProvider = ({ children }) => {
                 setGridView,
                 setListView,
                 sortProducts,
-                updateFilterValue,
+                updateFilterValue
             }
             }>
             {children}
