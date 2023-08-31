@@ -16,7 +16,6 @@ export default function FilterSection() {
         let flatData = unique.flat(); 
 
         let uniqueFlatData = ["all", ...new Set(flatData)];
-        console.log("uniqueFlatData", uniqueFlatData);
         return uniqueFlatData;
     }
     const uniqueCategoryValue = getUniqueCategory(allProducts, "category");

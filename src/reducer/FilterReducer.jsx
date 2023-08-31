@@ -26,33 +26,25 @@ const reducer = (state, action) => {
         case "GET_SORTED_PRODUCTS":
             const {sortingValue, filteredProducts} = state;
             let tempSortedProducts = [...filteredProducts];
-            console.log("tempSortedProducts 1", tempSortedProducts)
             if(sortingValue === "lowest"){
-                tempSortedProducts = tempSortedProducts.sort((a,b) => a.price - b.price)
-                console.log("tempSortedProducts lowest", tempSortedProducts)
                 
             }
             if(sortingValue === "highest"){
                 tempSortedProducts = tempSortedProducts.sort((a,b) => b.price - a.price)
-                console.log("tempSortedProducts highest", tempSortedProducts)
                 
             }
             if(sortingValue === "ascending"){
                 tempSortedProducts = tempSortedProducts.sort((a,b) => a.name.localeCompare(b.name))
-                console.log("tempSortedProducts ascending", tempSortedProducts)
                 
             }
             if(sortingValue === "descending"){
                 tempSortedProducts = tempSortedProducts.sort((a,b) => b.name.localeCompare(a.name))
-                console.log("tempSortedProducts descending", tempSortedProducts)
                 
             }
             if (sortingValue === "all"){
                 tempSortedProducts = [...state.allProducts];
-                console.log("tempSortedProducts all", tempSortedProducts)
                 
             }
-            console.log("tempSortedProducts 2", tempSortedProducts)
 
         return {
             ...state,
@@ -75,26 +67,29 @@ const reducer = (state, action) => {
 
             if (text) {
                 tempFilteredProducts = tempFilteredProducts.filter((curEle) => {
+                    console.log("TEXT",tempFilteredProducts)
                     return curEle.name.toLowerCase().includes(text.toLowerCase());
                 });
             }
             if (category !== "all") {
                 tempFilteredProducts = tempFilteredProducts.filter((curEle) => {
-                    // curEle.category is an array
+                    console.log("CATEGORY",tempFilteredProducts)
                     return curEle.category.includes(category);
                 });
             }
             if (colors !== "all") {
                 tempFilteredProducts = tempFilteredProducts.filter((curEle) => {
-                    return curEle.colors === colors;
+                    console.log("COLORS",tempFilteredProducts)
+                    return curEle.colors.includes(colors);
                 });
             }
             if (brand !== "all") {
                 tempFilteredProducts = tempFilteredProducts.filter((curEle) => {
-                    // curEle.brand is not an array
-                    return curEle.brand.includes(brand);
+                    console.log("BRAND",tempFilteredProducts)
+                    return curEle.brand === brand;
                 });
             }
+            
 
 
             return {

@@ -39,7 +39,6 @@ const FilterProvider = ({ children }) => {
     //! update the filter values
     const updateFilterValue = (event)=> {
         let {name, value} = event.target;
-        console.log("name", name, "value", value)
 
         return dispatch({type: "UPDATE_FILTERS_VALUE", payload: {name, value}});
     }
