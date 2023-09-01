@@ -13,6 +13,8 @@ import { ThemeProvider } from 'styled-components'
 import Navbar from './pages/Navbar'
 import Footer from './pages/components/Footer'
 
+import './App.scss'
+
 
 
 function App() {

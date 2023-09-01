@@ -15,6 +15,9 @@ const initialState = {
         category: "all",
         colors: "all",
         brand: "all",
+        price: 0,
+        maxPrice: 0,
+        minPrice: 0,
     }
 };
 
@@ -36,9 +39,15 @@ const FilterProvider = ({ children }) => {
         dispatch({ type: "GET_SORT_VALUE", payload: sortValue });
     };
 
+    //! clear all filters
+    const clearFilters = () => {
+        dispatch({type: "CLEAR_FILTERS"});
+    }
+
     //! update the filter values
     const updateFilterValue = (event)=> {
         let {name, value} = event.target;
+        // console.log ("state", state.filters)
 
         return dispatch({type: "UPDATE_FILTERS_VALUE", payload: {name, value}});
     }
@@ -46,12 +55,12 @@ const FilterProvider = ({ children }) => {
     //! load filtered products when the filters change or sorted products when the sorting value changes
     useEffect(() => {
         dispatch({type: "FILTER_PRODUCTS"})
-        // dispatch({type: "GET_SORTED_PRODUCTS"});
-    }, [products, state.filters]);
-
-    useEffect(() => {
         dispatch({type: "GET_SORTED_PRODUCTS"});
-    }, [ state.sortingValue])
+    }, [products, state.filters, state.sortingValue]);
+
+    // useEffect(() => {
+    //     dispatch({type: "GET_SORTED_PRODUCTS"});
+    // }, [ state.sortingValue])
     
 
     //! load all products for the gird and list view for the first time
@@ -69,7 +78,8 @@ const FilterProvider = ({ children }) => {
                 setGridView,
                 setListView,
                 sortProducts,
-                updateFilterValue
+                updateFilterValue,
+                clearFilters
             }
             }>
             {children}

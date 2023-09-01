@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components';
 import FilterContextProvider from '../../context/FilterContext';
+import {LuFilterX} from "react-icons/lu";
 import {FaCheck} from 'react-icons/fa';
-import { capitalize } from '../../helpers/Utilities';
+import { FormatPrice, capitalize } from '../../helpers/Utilities';
 
 export default function FilterSection() {
-    const {filters:{text, category, colors}, updateFilterValue, allProducts} = FilterContextProvider();
+    const {filters:{text, category, colors, price, maxPrice, minPrice}, updateFilterValue, allProducts, clearFilters} = FilterContextProvider();
 
     const getUniqueCategory = (data, type) => {
         let unique = data.map ((item) => item[type])
@@ -21,7 +22,8 @@ export default function FilterSection() {
     const uniqueCategoryValue = getUniqueCategory(allProducts, "category");
     const uniqueColorValue = getUniqueCategory(allProducts, "colors");
     const uniqueBrandValue = getUniqueCategory(allProducts, "brand");
-
+    
+    
     return (
         <Wrapper>
             <div className='pb-3'>
@@ -47,10 +49,10 @@ export default function FilterSection() {
             <div className='pb-3'>
                 <h3 className='mb-2 font-semibold'>Brand</h3>
                 <div>
-                    <select name="brand" id="brand" onClick={updateFilterValue} className='color-gray font-light p-2 rounded-full dropdownButton button'>
+                    <select name="brand" id="brand" onChange={updateFilterValue} className='color-gray font-light p-2 rounded-full dropdownButton button'>
                         {uniqueBrandValue.map((item, index) => {
                             return (
-                                <option name="brand" key={index} value={item}>{item}</option>
+                                <option name="brand" key={index} value={item}>{capitalize(item)}</option>
                             )
                         })
                         }
@@ -58,21 +60,38 @@ export default function FilterSection() {
                     </select>
                 </div>
             </div>
-            <div>
+            <div className='pb-3'>
                 <h3 className='mb-2 font-semibold'>Color</h3>
                 <div className='flex items-center'>
                     {uniqueColorValue.map((item, index) => {
                         return (
-                            <button type='button btnColor' key={index}  name="colors" style={{backgroundColor: item, opacity: colors===item ? "100" : null}} onClick={updateFilterValue} value={item} 
+                            <button 
+                            type='button' 
+                            key={index}  
+                            name="colors" 
+                            onClick={updateFilterValue} value={item} 
 
-                                className={`duration-300 mx-[2px] color-gray ${item === "all" ? "w-[30px] h-[30px] opacity-100": " opacity-40"}
-                                font-light w-[20px] h-[20px] rounded-full ${colors === item ? "offset-shadow": null}  hover:opacity-100`}>
+                            style={{backgroundColor: item, opacity: colors===item ? "100" : null}} 
 
-                            {/* colors is not defined */}
+                            className=  {`duration-300 mx-[2px] ${item === "all" ? "w-[30px] h-[30px] opacity-100": " opacity-40"}
+                                        font-light w-[20px] h-[20px] rounded-full ${colors === item ? "offset-shadow": null}  hover:opacity-100`}
+                            >
+
                             { item === "all" ? "All" : colors === item ? <FaCheck className='mx-auto text-gray-400' size={10}/> : null}
                             </button>
                         )
                     })}
+                </div>
+            </div>
+            <div className='mb-3'>
+                <h3 className='mb-2 font-semibold'>Price</h3>
+                <p className='font-light color-gray pb-1'><FormatPrice  price={price} /></p>
+                <input type="range" name='price' min={minPrice} max={maxPrice} value={price} onChange={updateFilterValue} className='range-style' />
+            </div>
+            <div>
+                <div onClick={clearFilters} className='flex items-center justify-between button clearFilterButton '>
+                    <button>Clear Filters</button>
+                    <LuFilterX size={20}/>
                 </div>
             </div>
         </Wrapper>
@@ -87,8 +106,12 @@ const Wrapper = styled.div`
     opacity: 0;
 }
 .dropdownButton {
-    width: 100px;
+    min-width: 100px;
+    max-width: fit-content;
     margin: 0;
+}
+.clearFilterButton {
+    max-width: fit-content;
 }
 
 `

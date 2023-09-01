@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     .color-gray{
         color: #434343;
     }
-    /////////////////////// for inset-offset inputs/////////////////////
+    //~ ///////////////////// for inset-offset inputs/////////////////////
     .input {
         background: #e0e0e0;
         color: #696a6f;
@@ -86,7 +86,7 @@ const GlobalStyle = createGlobalStyle`
       
 
 
-      //////////////////////// for inset-offset Buttons/////////////////////
+      //~ ////////////////////// for inset-offset Buttons/////////////////////
       .button {
         border-radius: 50px;
         background: #e0e0e0;
@@ -174,7 +174,8 @@ const GlobalStyle = createGlobalStyle`
           box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff;
         }
       }
-
+      //~ ///////////////////////////// for range input /////////////////////////////
+      
       `;
 
 export default GlobalStyle;

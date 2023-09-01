@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {useParams, NavLink} from 'react-router-dom'
 import ProductContextProvider from '../context/ProductContext';
+import cartContextProvider from '../context/CartContext';
 import PageNavigation from './components/PageNavigation';
 import FormatPrice from '../helpers/FormatPrice';
+import {FaCheck} from 'react-icons/fa';
 
 // import free delievery, item replacement, warranty and secure payment icons react icons
 import {FaTruck, FaExchangeAlt, FaShieldAlt, FaRegCreditCard} from 'react-icons/fa';
@@ -15,6 +17,8 @@ export default function SingleProduct() {
   const {id} = useParams();
   const numericId = id.replace(':', "")
   const {isSingleProductLoading, getSingleProduct, singleProduct, quantity, addQuantity, subtractQuantity} = ProductContextProvider();
+  const {addToCart} = cartContextProvider();
+  const [selectedColor, setSelectedColor] = useState('');
 
   
   useEffect(() => {
@@ -34,10 +38,14 @@ export default function SingleProduct() {
     price,
     description,
     category,
+    colors,
     imageUrl,
     ratings,
   } = singleProduct;
-  
+  const selectColor = (color) => {
+    setSelectedColor(color)
+  }
+
   
 
   return (
@@ -52,13 +60,31 @@ export default function SingleProduct() {
           <h1 className='font-semibold my-1 md:my-[20px]'>{name}</h1>
           <p className='md:hidden block font-semibold color-gray  my-3'>{<FormatPrice price = {price} />}</p>
 
+          <p className='color-gray font-light text-left my-1 md:my-[20px]'>{description}</p>
+
           {/* <p className=' my-1 md:my-[20px]'>{rating.rate}<br/>{rating.count} Reviews</p> */}
           <div className='flex flex-row items-center'>
             <p className=' my-1 md:my-[10px] w-[50%]'><StarRating rating = {ratings.stars}/></p>
             <p className='w-[50%]'>{ratings.reviews} Reviews</p>
           </div>
 
-          <p className='color-gray font-light text-left my-1 md:my-[20px]'>{description}</p>
+          <div>
+            {colors.map((color, index) => (
+              <span
+                key={index}
+                onClick={() => selectColor(color)}
+                className={`text-center pt-[1px] pl-[1px] group inline-block w-[20px] h-[20px] rounded-full border-[1px] border-[#C6C6C6] mx-1 hover:opacity-100 ${selectedColor === color ? 'opacity-100' : 'opacity-40'}`}
+                style={{ backgroundColor: color }}
+              >
+                {selectedColor === color && (
+                  <p className=' text-white'>
+                    <FaCheck size={15}/>
+                  </p>
+                )}
+              </span>
+            ))}
+          </div>
+
           <p className='md:block hidden font-semibold color-gray  my-3'>{<FormatPrice price = {price} />}</p>
           {/* import {FaTruck, FaExchangeAlt, FaShieldAlt, FaRegCreditCard} from 'react-icons/fa'; */}
           <div className='grid gap-3 grid-cols-2 md:grid-cols-4 mt-[20px] md:mt-[40px] color-gray'>
@@ -87,7 +113,7 @@ export default function SingleProduct() {
                 {quantity} 
               <button className='addButton button' onClick={()=> addQuantity(quantity)}>+</button>
             </div>
-            <NavLink to="/cart" className='button cartButton text-center'>Add to cart</NavLink>
+            <NavLink to="/cart" onClick={()=> {addToCart ( productId, selectedColor, quantity, singleProduct)}} className='button cartButton text-center'>Add to cart</NavLink>
           </div>
         </div>
       </div>
