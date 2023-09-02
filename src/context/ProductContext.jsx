@@ -59,20 +59,11 @@ const ProductProvider = ({children}) => {
         setFeaturedProducts(state.featuredProducts)
         console.log("featured products " + state.featuredProducts)
     }, []);
-    //& /////////////////////////////////////////
-    const [quantity, setQuantity] = React.useState(1);
-    const addQuantity = (value) => {
-        setQuantity(value + 1);
-    }
-    const subtractQuantity = (value) => {
-        if (value > 1) {
-            setQuantity(value - 1);
-        }
-    }
+   
     return (
-        <ProductContext.Provider value={{...state, getSingleProduct,
-                                         quantity, addQuantity, subtractQuantity
-                                         
+        <ProductContext.Provider value={{
+                                        ...state, 
+                                        getSingleProduct,
                                         }}>
             {children}
         </ProductContext.Provider>

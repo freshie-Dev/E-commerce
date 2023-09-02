@@ -2,64 +2,80 @@ import React from 'react'
 import styled from 'styled-components'
 import cartContextProvider from '../context/CartContext';
 
-//import remove icon from react icons
-import {FaTrash} from 'react-icons/fa';
+
 
 import cartBG from '../assets/cartBG.jpg'
+import CartItems from './components/CartItems';
+import { NavLink } from 'react-router-dom';
+import FormatPrice from '../helpers/FormatPrice';
 
 export default function Cart() {
-  const {cart} = cartContextProvider();
-  console.log(cart);
+  const {cart, clearCart, totalPrice, orderTotal, shippingFee} = cartContextProvider();
+
+  if (!cart) {
+    return ( 
+      <Wrapper>
+        <div className='flex flex-col justify-center items-center main'>
+          <h1 className=' text-2xl color-gray font-semibold'>No Items in Cart</h1>
+          <NavLink to = "/products" className="button browseBtn">Browse Products</NavLink>
+        </div>
+      </Wrapper>
+    )
+  } 
   return (
     <Wrapper>
-      <div className='body'>
-          <h1 className='text-center'>Cart</h1>
-        <div className='grid grid-cols-5 mx-[10%]'>
-          <p>Item</p>
-          <p className=''>Quantity</p>
-          <p>Price</p>
-          <p>Subtotal</p>
-          <p className=''>Remove</p>
+      <div className='main color-gray'>
+          <h1 className='text-center color-gray text-3xl mb-[50px]'>Cart</h1>
+        <div className='grid grid-cols-5 mx-[13%]'>
+          <p className=' text-lg font-light '>Item</p>
+          <p className=' text-lg font-light color-gray'>Quantity</p>
+          <p className=' text-lg font-light '>Price</p>
+          <p className=' text-lg font-light '>Subtotal</p>
+          <p className=' text-lg font-light '>Remove</p>
         </div>
+        <div className='w-[70vw] my-4 mx-auto h-[2px] bg-gray-500  rounded-full'></div>
           {cart.map((item, index) => {
             return (
-              
-              <div className='grid grid-cols-5 mx-[10%] py-1'>
-                <div className='flex'>
-                    <img className='w-[50px]' src={item.image} alt={item.name} />
-                    <div className='my-auto'>
-                      <p>{item.name}</p>
-                      <p>{item.color}</p>
-                    </div>
-                </div>
-                <div className='flex items-center '>
-                  <button>-</button>
-                  <p>{item.quantity}</p>
-                  <button>+</button>
-                </div>
-                <div className='my-auto'>
-                  <p>{item.price}</p>
-                </div>
-                <div className='my-auto'>
-                  <p>{item.price * item.quantity}</p>
-                </div>
-                <div className='my-auto'>
-                  <button><FaTrash/></button>
-                </div>
-            </div>
+              <CartItems key={index} {...item}/>
             )
           })}
-        </div>
+
+          <div className='flex justify-between mx-[10%]'>
+            <NavLink to="/products" className='button contBtn'>Keep Shopping</NavLink>
+            <button onClick={clearCart} className='button clearBtn '>Clear Cart</button>
+          </div>
+          <div className='flex justify-end px-[10%] '>
+            <div className='grid grid-cols-2 color-gray text-md md:text-lg main'>
+              <p className='mr-3'>Sub Total:</p>
+              <p className='text-right font-semibold'><FormatPrice price={totalPrice} /></p>
+              <p className='mr-3'>Shipping Fee:</p>
+              <p className='text-right font-semibold'><FormatPrice price={shippingFee} /></p>
+              <hr className='h-[3px] bg-gray-800 w-full my-3 ' />
+              <hr className='h-[3px] bg-gray-800 w-full my-3 ' />
+              <p className='mr-3'>Total:</p>
+              <p className='text-right font-semibold'><FormatPrice price={orderTotal} /></p>
+
+            </div>
+          </div>
+      </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  .body {
-    background-image: url(${cartBG});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
+  .contBtn, .clearBtn, .browseBtn  {
+    width: fit-content;
+    min-width: 170px;
   }
-`;
+  .main {
+    padding: 25px;
+    border-radius: 30px;
+  }
+  `;
+  
+  // .clearBtn {
+  //   color: #fe5f77;
+  // }
+  // .contBtn {
+  //   color: #1dfc49;
+  // }

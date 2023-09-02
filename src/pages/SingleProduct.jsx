@@ -16,8 +16,8 @@ import StarRating from './components/StarsRating';
 export default function SingleProduct() {
   const {id} = useParams();
   const numericId = id.replace(':', "")
-  const {isSingleProductLoading, getSingleProduct, singleProduct, quantity, addQuantity, subtractQuantity} = ProductContextProvider();
-  const {addToCart} = cartContextProvider();
+  const {isSingleProductLoading, getSingleProduct, singleProduct } = ProductContextProvider();
+  const {addToCart, quantity, addQuantity, subtractQuantity} = cartContextProvider();
   const [selectedColor, setSelectedColor] = useState('');
 
   
@@ -39,6 +39,7 @@ export default function SingleProduct() {
     description,
     category,
     colors,
+    stock,
     imageUrl,
     ratings,
   } = singleProduct;
@@ -109,11 +110,11 @@ export default function SingleProduct() {
 
           <div className='flex flex-col'>
             <div className='flex flex-row'>
-              <button className='addButton button' onClick={()=> subtractQuantity(quantity)}>-</button>
+              <button name='add-button' className='addButton button' onClick={()=> {if(quantity > 1) {  subtractQuantity(quantity)} else { alert("Aleast select 1 item")}}}>-</button>
                 {quantity} 
-              <button className='addButton button' onClick={()=> addQuantity(quantity)}>+</button>
+              <button name='subtract-button' className='addButton button' onClick={()=> {if(quantity < stock) { addQuantity(quantity)} else { alert ("No more stock sorry")}}}>+</button>
             </div>
-            <NavLink to="/cart" onClick={()=> {addToCart ( productId, selectedColor, quantity, singleProduct)}} className='button cartButton text-center'>Add to cart</NavLink>
+            <NavLink name= "reset-button" to="/cart" onClick={()=> {addToCart ( productId, selectedColor, quantity, singleProduct);}} className='button cartButton text-center'>Add to cart</NavLink>
           </div>
         </div>
       </div>

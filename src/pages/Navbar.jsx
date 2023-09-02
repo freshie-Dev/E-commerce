@@ -8,9 +8,14 @@ import { GrClose } from 'react-icons/gr';
 import styled from 'styled-components';
 import Home from './Home';
 import Cart from './Cart';
+import cartContextProvider from '../context/CartContext';
 
 export default function Navbar() {
     const [toggle, setToggle] = React.useState(false);
+    const [itemValue, setItemValue ] = useState(5)
+    const {totalItems} = cartContextProvider();
+    totalItems? console.log("yes i exist"): console.log ("i dont exist")
+    console.log("klasdhflkasd", totalItems)
 
   return (
     <Wrapper>
@@ -22,7 +27,7 @@ export default function Navbar() {
             <li className='px-2'><Link to="/about" element ={<Home/>}>About</Link></li>
             <li className='px-2'><Link to="/products" element ={<Home/>}>Products</Link></li>
             <li className='px-2'><Link to="/contact" element ={<Home/>}>Contact</Link></li>
-            <li className='px-2'><Link to="/cart" element ={<Cart/>}><AiOutlineShoppingCart size={25} /></Link></li>
+            <li className='px-2 relative'><Link to="/cart" element ={<Cart/>}><AiOutlineShoppingCart size={25} /></Link><p className='absolute flex justify-center items-center top-[-15px] right-[-10px] bg-gray-600 text-gray-300 w-6 h-6 rounded-full'>{totalItems}</p></li>
           </ul>
         </div>
 
@@ -39,7 +44,7 @@ export default function Navbar() {
                     <li className='py-2'><Link to="/about" element ={<Home/>}>About</Link></li>
                     <li className='py-2'><Link to="/products" element ={<Home/>}>Products</Link></li>
                     <li className='py-2'><Link to="/contact" element ={<Home/>}>Contact</Link></li>
-                    <li className='py-2'><Link to="/cart" element ={<Cart/>}><AiOutlineShoppingCart size={25} /></Link></li>
+                    <li className='py-2'><Link to="/cart" element ={<Cart/>}><AiOutlineShoppingCart size={25} /></Link>{totalItems}</li>
                   </ul>
             </div>
             </div>

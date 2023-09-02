@@ -9,7 +9,7 @@ export default function FormatPrice(props) {
     
         currency:"PKR",
     
-        maximumFractionDigits:2,
+        maximumFractionDigits:0,
     
       }).format(props.price*100);
     
