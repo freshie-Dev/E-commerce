@@ -4,15 +4,19 @@ import cartContextProvider from '../context/CartContext';
 
 
 
+
 import cartBG from '../assets/cartBG.jpg'
 import CartItems from './components/CartItems';
 import { NavLink } from 'react-router-dom';
 import FormatPrice from '../helpers/FormatPrice';
+import UserContextProvider from '../context/UserContext';
 
 export default function Cart() {
   const {cart, clearCart, totalPrice, orderTotal, shippingFee} = cartContextProvider();
+  const { buyItems } = UserContextProvider();
 
-  if (JSON.parse(localStorage.getItem('cart')).length === 0) {
+  localStorage
+  if (localStorage.getItem('cart').length === 2) {
     return ( 
       <Wrapper>
         <div className='flex flex-col justify-center items-center main'>
@@ -44,8 +48,8 @@ export default function Cart() {
             <NavLink to="/products" className='button contBtn'>Keep Shopping</NavLink>
             <button onClick={clearCart} className='button clearBtn '>Clear Cart</button>
           </div>
-          <div className='flex justify-end px-[10%] '>
-            <div className='grid grid-cols-2 color-gray text-md md:text-lg main'>
+          <div className='flex  justify-end px-[10%] '>
+            <div className='grid grid-cols-2 w-[300px] color-gray text-md md:text-lg main buyContainer relative'>
               <p className='mr-3'>Sub Total:</p>
               <p className='text-right font-semibold'><FormatPrice price={totalPrice} /></p>
               <p className='mr-3'>Shipping Fee:</p>
@@ -54,7 +58,7 @@ export default function Cart() {
               <hr className='h-[3px] bg-gray-800 w-full my-3 ' />
               <p className='mr-3'>Total:</p>
               <p className='text-right font-semibold'><FormatPrice price={orderTotal} /></p>
-              
+              <button onClick={buyItems} className='absolute button buyBtn '>BUY</button>
             </div>
           </div>
       </div>
@@ -63,13 +67,22 @@ export default function Cart() {
 }
 
 const Wrapper = styled.div`
-  .contBtn, .clearBtn, .browseBtn  {
+  .contBtn, .clearBtn, .browseBtn, .buyBtn  {
     width: fit-content;
     min-width: 170px;
   }
   .main {
     padding: 25px;
     border-radius: 30px;
+  }
+  .buyBtn {
+    width: 250px;
+    bottom: -90px;
+    left: 8%;
+  }
+  .buyContainer {
+    margin-top: 20px ;
+    margin-bottom: 80px ;
   }
   `;
   

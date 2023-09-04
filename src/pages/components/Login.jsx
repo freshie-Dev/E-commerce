@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import UserContextProvider from '../../context/UserContext';
 
 export default function Login() {
-    const { loggedInUser, setLoggedInUser} = UserContextProvider();
+    const {loggedInUser,setLoggedInUser} = UserContextProvider();
     let navigate = useNavigate();
     const [User, setUser] = useState({
         email: '',
@@ -22,16 +22,17 @@ export default function Login() {
         e.preventDefault();
         const response = await axios.post('http://localhost:3000/register/login', User)
         const data = await (response.data)
-
+        console.log(data)
         localStorage.setItem('token', data.token)
         setLoggedInUser({
             name: data.foundUser.name,
             email: data.foundUser.email,
             password: data.foundUser.password,
             type: data.foundUser.type,
+            orders: data.foundUser.orders,
           })
         
-        // console.log(loggedInUser)
+        console.log("from login",loggedInUser)
         // console.log(data.token)
 
         navigate('/');

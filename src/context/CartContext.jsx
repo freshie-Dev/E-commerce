@@ -59,6 +59,13 @@ const CartProvider = ({children}) => {
         dispatch({type: 'CLEAR_CART'})
     }
 
+    
+        
+
+
+        
+    
+
     //! Adding cart to local storage
     useEffect(() => {
         dispatch ({type: 'CART_LOGO_VALUE'})

@@ -4,6 +4,7 @@ export default function reducer(state, action) {
     switch (action.type) {
         case 'ADD_TO_CART':
             const { id, color, quantity, product } = action.payload;
+            console.log('sldja', product);
 
             const tempItem = state.cart.find((item) => item.id === id + color);
             if (tempItem) {
@@ -21,6 +22,7 @@ export default function reducer(state, action) {
                 return { ...state, cart: tempCart };
             } else {
                 const tempCartProduct = {
+                    _id: id,
                     id: id + color,
                     name: product.name,
                     color,
@@ -28,6 +30,7 @@ export default function reducer(state, action) {
                     price: product.price,
                     image: product.imageUrl,
                     max: product.stock,
+                    brand: product.brand,
                 };
                 return {
                     ...state,

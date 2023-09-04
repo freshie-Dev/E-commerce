@@ -21,4 +21,19 @@ function capitalize(s)
     return s[0].toUpperCase() + s.slice(1);
 }
 
-export { truncate, getWordStr, FormatPrice, capitalize };
+const FormatDate = (dateStr)=> {
+
+  const date = new Date(dateStr.date);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const dateFormatted = date.toLocaleDateString(undefined, options);
+  const timeFormatted = date.toLocaleTimeString();
+
+  return (
+    <>
+      <p>{dateFormatted}</p>
+      <p>{timeFormatted}</p>
+    </>
+  )
+}
+
+export { truncate, getWordStr, FormatPrice, capitalize, FormatDate };

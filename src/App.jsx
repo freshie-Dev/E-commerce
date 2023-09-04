@@ -15,6 +15,10 @@ import Footer from './pages/components/Footer'
 
 import './App.scss'
 import Register from './pages/Register'
+import Menu from './pages/components/Menu'
+import Account from './pages/Account'
+import Details from './pages/components/Details'
+import Orders from './pages/components/Orders'
 
 
 
@@ -40,6 +44,7 @@ function App() {
         <GlobalStyle/>
             <Navbar/>
             <Routes>
+              <Route path="/menu" element={<Menu/>}/>
               <Route path="/" element={<Home/>}/>
               <Route path="/register" element={<Register />} />
               <Route path="/about" element={<About/>}/>
@@ -49,6 +54,13 @@ function App() {
               <Route path = "/cart" element= {<Cart/>}/>
               {/* 404 */}
               <Route path = "*" element= {<ErrorPage/>}/>
+              
+              <Route path="/account" element={<Account />}>
+                <Route path="/account/details" element={<Details />} />
+                <Route path='/account/orders' element={<Orders />}>
+                </Route>
+              </Route>
+
             </Routes>
             <Footer />
       </Router>
