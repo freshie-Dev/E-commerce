@@ -7,7 +7,7 @@ export default function reducer(state, action) {
 
             const tempItem = state.cart.find((item) => item.id === id + color);
             if (tempItem) {
-                const tempCart = state.cart.map((cartItem) => {
+                const tempCart = state.cart.map((cartItem) => { 
                     if (cartItem.id === id + color) {
                         let newQuantity = cartItem.quantity + quantity;
                         if (newQuantity > cartItem.max) {

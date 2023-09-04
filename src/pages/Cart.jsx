@@ -12,7 +12,7 @@ import FormatPrice from '../helpers/FormatPrice';
 export default function Cart() {
   const {cart, clearCart, totalPrice, orderTotal, shippingFee} = cartContextProvider();
 
-  if (!cart) {
+  if (JSON.parse(localStorage.getItem('cart')).length === 0) {
     return ( 
       <Wrapper>
         <div className='flex flex-col justify-center items-center main'>
@@ -24,15 +24,15 @@ export default function Cart() {
   } 
   return (
     <Wrapper>
-      <div className='main color-gray'>
+      <div className='main color-gray '>
           <h1 className='text-center color-gray text-3xl mb-[50px]'>Cart</h1>
-        <div className='grid grid-cols-5 mx-[13%]'>
-          <p className=' text-lg font-light '>Item</p>
-          <p className=' text-lg font-light color-gray'>Quantity</p>
-          <p className=' text-lg font-light '>Price</p>
-          <p className=' text-lg font-light '>Subtotal</p>
-          <p className=' text-lg font-light '>Remove</p>
-        </div>
+          <div className='grid lg:grid-cols-6 grid-cols-4 mx-[13%]'>
+            <p className=' text-lg font-light col-span-2'>Item</p>
+            <p className=' text-lg font-light color-gray text-center'>Quantity</p>
+            <p className=' text-lg font-light lg:block hidden '>Price</p>
+            <p className=' text-lg font-light lg:block hidden '>Subtotal</p>
+            <p className=' text-lg font-light text-center'>Remove</p>
+          </div>
         <div className='w-[70vw] my-4 mx-auto h-[2px] bg-gray-500  rounded-full'></div>
           {cart.map((item, index) => {
             return (
@@ -40,7 +40,7 @@ export default function Cart() {
             )
           })}
 
-          <div className='flex justify-between mx-[10%]'>
+          <div className='flex justify-evenly sm:mx-[10%]'>
             <NavLink to="/products" className='button contBtn'>Keep Shopping</NavLink>
             <button onClick={clearCart} className='button clearBtn '>Clear Cart</button>
           </div>
@@ -54,7 +54,7 @@ export default function Cart() {
               <hr className='h-[3px] bg-gray-800 w-full my-3 ' />
               <p className='mr-3'>Total:</p>
               <p className='text-right font-semibold'><FormatPrice price={orderTotal} /></p>
-
+              
             </div>
           </div>
       </div>

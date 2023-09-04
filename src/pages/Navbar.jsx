@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -9,19 +9,32 @@ import styled from 'styled-components';
 import Home from './Home';
 import Cart from './Cart';
 import cartContextProvider from '../context/CartContext';
+import UserContextProvider from '../context/UserContext';
 
 export default function Navbar() {
+  const {loggedInUser} = UserContextProvider();
+  console.log("navbar", loggedInUser)
+  const navigate = useNavigate();
     const [toggle, setToggle] = React.useState(false);
     const [itemValue, setItemValue ] = useState(5)
     const {totalItems} = cartContextProvider();
-    totalItems? console.log("yes i exist"): console.log ("i dont exist")
-    console.log("klasdhflkasd", totalItems)
+
+    const token = localStorage.getItem('token');
 
   return (
     <Wrapper>
       <div className='flex justify-between items-center navbar px-[30px] h-[90px] text-[#67686d]'>
         <div className='flex justify-between items-center w-full'>
           <h1 className='md:text-5xl md:font-bold text-2xl font-semibold'>Navbar</h1>
+          
+         {token ?
+            <div className='ml-[100px]'>
+                <button className='border-b-2 border-gray-500'>hello</button>
+                <button onClick={()=> { localStorage.removeItem('token'); navigate('/register')}} className='px-2'>Logout</button> 
+            </div>
+            : null
+         }
+
           <ul className='hidden md:flex font-normal'>
             <li className='px-2'><Link to="/" element ={<Home/>}>Home</Link></li>
             <li className='px-2'><Link to="/about" element ={<Home/>}>About</Link></li>

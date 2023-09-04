@@ -58,7 +58,7 @@ export default function SingleProduct() {
           <Images image={imageUrl} price={price}/>
         </div>
         <div className='md:w-[50%] p-3  text:lg md:text-xl'>
-          <h1 className='font-semibold my-1 md:my-[20px]'>{name}</h1>
+          <h1 className='font-semibold text-2xl md:text-3xl my-1 md:my-[20px] color-gray'>{name}</h1>
           <p className='md:hidden block font-semibold color-gray  my-3'>{<FormatPrice price = {price} />}</p>
 
           <p className='color-gray font-light text-left my-1 md:my-[20px]'>{description}</p>
@@ -69,26 +69,39 @@ export default function SingleProduct() {
             <p className='w-[50%]'>{ratings.reviews} Reviews</p>
           </div>
 
-          <div>
+          <div className='flex my-3 items-center '>
+            <p className='font-semibold color-gray'>Select a Color: </p>
             {colors.map((color, index) => (
               <span
                 key={index}
                 onClick={() => selectColor(color)}
-                className={`text-center pt-[1px] pl-[1px] group inline-block w-[20px] h-[20px] rounded-full border-[1px] border-[#C6C6C6] mx-1 hover:opacity-100 ${selectedColor === color ? 'opacity-100' : 'opacity-40'}`}
+                className={`ml-2 w-[20px] h-[20px] rounded-full border-[1px] border-[#484848] hover:opacity-100 ${selectedColor === color ? 'opacity-100' : 'opacity-40'}`}
                 style={{ backgroundColor: color }}
               >
                 {selectedColor === color && (
-                  <p className=' text-white'>
-                    <FaCheck size={15}/>
-                  </p>
+                    <FaCheck size={13} className='text-gray-500 mx-auto mt-[2px]'/>
                 )}
               </span>
             ))}
           </div>
 
-          <p className='md:block hidden font-semibold color-gray  my-3'>{<FormatPrice price = {price} />}</p>
-          {/* import {FaTruck, FaExchangeAlt, FaShieldAlt, FaRegCreditCard} from 'react-icons/fa'; */}
-          <div className='grid gap-3 grid-cols-2 md:grid-cols-4 mt-[20px] md:mt-[40px] color-gray'>
+          <p className='md:block hidden font-semibold color-gray  my-4'>{<FormatPrice price = {price} />}</p>
+          
+          <hr className="my-4 border-t-2 border-[#C6C6C6] mt-[30px]" />
+
+
+          <div className='flex flex-col mt-[20px]'>
+            <div className='flex flex-row'>
+              <button name='add-button' className='addButton button' onClick={()=> {if(quantity > 1) {  subtractQuantity(quantity)} else { alert("Aleast select 1 item")}}}>-</button>
+                {quantity} 
+              <button name='subtract-button' className='addButton button' onClick={()=> {if(quantity < stock) { addQuantity(quantity)} else { alert ("No more stock sorry")}}}>+</button>
+            </div>
+            <NavLink name= "reset-button" to="/cart" onClick={()=> {addToCart ( productId, selectedColor, quantity, singleProduct);}} className='button cartButton text-center'>Add to cart</NavLink>
+          </div>
+
+          <hr className="mb-4 border-t-2 border-[#C6C6C6]" />
+
+          <div className='grid gap-3 grid-cols-2 md:grid-cols-4 my-[20px] md:my-[30px] color-gray'>
             <div className='text-center'>
               <FaTruck className='text-3xl mx-auto'/>
               <p className='text-sm'>Free Delievery</p>
@@ -108,14 +121,6 @@ export default function SingleProduct() {
           </div>
           <hr className="my-4 border-t-2 border-[#C6C6C6]" />
 
-          <div className='flex flex-col'>
-            <div className='flex flex-row'>
-              <button name='add-button' className='addButton button' onClick={()=> {if(quantity > 1) {  subtractQuantity(quantity)} else { alert("Aleast select 1 item")}}}>-</button>
-                {quantity} 
-              <button name='subtract-button' className='addButton button' onClick={()=> {if(quantity < stock) { addQuantity(quantity)} else { alert ("No more stock sorry")}}}>+</button>
-            </div>
-            <NavLink name= "reset-button" to="/cart" onClick={()=> {addToCart ( productId, selectedColor, quantity, singleProduct);}} className='button cartButton text-center'>Add to cart</NavLink>
-          </div>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ const StarRating = (props) => {
   
   return (
     <Wrapper>
-        <span className='grid grid-cols-7 text-xl text-yellow-600'>
+        <span className='grid grid-cols-7 md:grid-cols-10 md:text-3xl text-xl text-yellow-600'>
             {stars}
         </span>
     </Wrapper>

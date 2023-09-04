@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Routes, Route, BrowserRouter as Router, useLocation } from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -14,10 +14,13 @@ import Navbar from './pages/Navbar'
 import Footer from './pages/components/Footer'
 
 import './App.scss'
+import Register from './pages/Register'
 
 
 
 function App() {
+  
+
   const theme = {
     colors: {
       bgc: "#E0E0E0",
@@ -28,17 +31,17 @@ function App() {
       link: "#444444",
     },
   }
-console.log(location.pathname)
 
   return (
           
     <ThemeProvider theme={theme}>
-       <Router basename='/E-commerce'>
+       <Router basename='/E-commerce/'>
       {/* <Router> */}
         <GlobalStyle/>
             <Navbar/>
             <Routes>
               <Route path="/" element={<Home/>}/>
+              <Route path="/register" element={<Register />} />
               <Route path="/about" element={<About/>}/>
               <Route path = "/products" element= {<Products/>}/>
               <Route path = "/contact" element= {<Contact/>}/>

@@ -6,19 +6,20 @@ import {FaTrash} from 'react-icons/fa';
 
 import cartContextProvider from '../../context/CartContext';
 import FormatPrice from '../../helpers/FormatPrice';
+import { getWordStr } from '../../helpers/Utilities';
 
 export default function CartItems({id, image, name, color, quantity, price}) {
     const {removeCartItem, increaseQuantity, decreaseQuantity} = cartContextProvider();
 
   return (
     <Wrapper>
-        <div className='offset-shadow mainDiv  grid grid-cols-5 mx-[10%] py-1'>
-            <div className='flex'>
-                <img className='w-[50px] rounded-lg mr-3' src={image} alt={name} />
+        <div className='offset-shadow mainDiv  grid lg:grid-cols-6 grid-cols-4 md:mx-[10%] py-1'>
+            <div className='flex col-span-2 justify-start'>
+                <img className='rounded-lg mr-3 md:w-[100px] md:max-h-[150px] w-[60px] max-h-[90px]  ' src={image} alt={name} />
                 <div className='my-auto'>
                 <div>
                     
-                    <p>{name}</p>
+                    <p>{getWordStr (name)}</p>
                 </div>
                 <div className='flex items-center justify-center'>
                     <p>color: </p>
@@ -26,18 +27,18 @@ export default function CartItems({id, image, name, color, quantity, price}) {
                 </div>
                 </div>
             </div>
-            <div className='flex items-center '>
+            <div className='flex items-center justify-center '>
             <button name='subtract-button' onClick={()=> decreaseQuantity(id)}>-</button>
             <p>{quantity}</p>
             <button name='add-button' onClick={()=> increaseQuantity(id)}>+</button>
             </div>
-            <div className='my-auto'>
+            <div className='my-auto  lg:block hidden'>
             <p><FormatPrice price={price}/></p>
             </div>
-            <div className='my-auto'>
+            <div className='my-auto  lg:block hidden'>
             <p><FormatPrice price = {price * quantity}/></p>
             </div>
-            <div className='my-auto'>
+            <div className='my-auto text-center'>
             <button onClick={()=> removeCartItem(id)}><FaTrash/></button>
             </div>
         </div>
