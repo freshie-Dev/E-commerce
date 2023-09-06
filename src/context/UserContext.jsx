@@ -2,6 +2,7 @@
 import { createContext, useState, useContext } from "react";
 import cartContextProvider from "./CartContext";
 import axios from "axios";
+import { data } from "autoprefixer";
 
 
 const UserContext = createContext({});
@@ -10,6 +11,12 @@ const UserProvider = ({children}) => {
     const {clearCart} = cartContextProvider();
     const [loggedInUser, setLoggedInUser] = useState();
     const [userOrders, setUserOrders] = useState();
+    const [userInfo, setUserInfo] = useState();
+
+    const [editableInfo, setEditableInfo] = useState({
+        name:"",
+        password: "",
+      })
 
     //! Buy items - Cart.jsx
     const buyItems = async ()=> {
@@ -33,11 +40,16 @@ const UserProvider = ({children}) => {
         console.log(order);
         const response = await axios.post("http://localhost:3000/register/addtocart", order, config )
         const data = await response.data;
-        console.log(data)
+        setUserOrders(data.orders)
+        console.log("from buy items",userOrders)
         clearCart();
         }
-    //! Fetch Orders - Orders.jsx
-    const fetchOrders = async ()=> {
+
+
+
+
+    //! Fetch User Information - Orders.jsx
+    const fetchInfo = async ()=> {
         const config = {
             headers: {
                 "auth-token": localStorage.getItem('token')
@@ -45,8 +57,20 @@ const UserProvider = ({children}) => {
         }
         const response = await axios.get("http://localhost:3000/register/userinfo", config)
         const data = await response.data;
-        setUserOrders(data.orders)
+        setInfo(data)
+        
+        localStorage.setItem('orders', data.orders)
+        console.log("local storage", userInfo)
+        // setUserInfo({
+        //     name: data.name,
+        //     email: data.email,
+        //     password: data.password,
+        //     type: data.type,
+        // })
         console.log(data)
+    }
+    function setInfo(data) {
+        setUserInfo(data)
     }
 
     
@@ -55,8 +79,11 @@ const UserProvider = ({children}) => {
             loggedInUser,
             setLoggedInUser,
             buyItems,
-            fetchOrders,
+            fetchInfo,
             userOrders,
+            userInfo,
+            editableInfo,
+            setEditableInfo
         }}>
             {children}
         </UserContext.Provider>

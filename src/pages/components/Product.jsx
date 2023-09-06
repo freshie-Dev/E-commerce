@@ -15,15 +15,15 @@ export default function Product(props) {
   return (
     <Wrapper>
       <NavLink to={`/singleProduct/:${data._id}`} className='div main flex flex-col'>
-          <img style={{mixBlendMode: "multiply" }} src={data.imageUrl} alt={data.title} className='w-[280px] h-[350px] object-contain pb-[20px] mx-auto rounded-xl'/>
+          <img style={{}} src={data.imageUrl} alt={data.title} className='w-[280px] h-[350px] object-contain pb-[20px] mx-auto rounded-xl'/>
          
-            <h1 className='font-bold  color-gray'>{getWordStr(data.name)}</h1>
-            <p className=' color-gray py-1'><FormatPrice price = {data.price} /></p>
+            <h1 className='font-bold   '>{getWordStr(data.name)}</h1>
+            <p className='   py-1'><FormatPrice price = {data.price} /></p>
          
           <p className='text-sm text-gray-500'>{truncate(data.description, 100)}</p>
           <span className='py-1'>
           <div className=' float-left'><StarRating rating = {data.ratings.stars}/></div>
-          <p className=' float-right color-gray'>{`(${data.ratings.reviews})`}</p>
+          <p className=' float-right  '>{`(${data.ratings.reviews})`}</p>
           </span>
       </NavLink>
     </Wrapper>

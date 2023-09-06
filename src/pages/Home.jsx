@@ -9,8 +9,6 @@ import FeaturedProducts from './components/FeaturedProducts'
 export default function Home() {
 
   const navigate = useNavigate()
-  let token = localStorage.getItem('token')
-  console.log("HOME", token)
 
 
   const data = {
@@ -20,6 +18,8 @@ export default function Home() {
   }
 
   useEffect(() => {
+    
+    let token = localStorage.getItem('token')
     if(!token){
       console.log("useeffect of home", token)
       navigate('/register')

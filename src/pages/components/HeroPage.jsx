@@ -9,7 +9,7 @@ export default function HeroPage(props) {
             <div className='flex md:flex-row flex-col items-center'>
                 <div className='md:w-[50%] w-full'>
                     <p>{data.greeting}</p>
-                    <h1 className='text-3xl font-bold mb-3'>{data.title}</h1>
+                    <h1 className='text-3xl font-bold mb-3 dark'>{data.title}</h1>
                     <p>{data.message}</p>
                 </div>
                 <figure className='md:w-[50%] w-full flex justify-center items-center p-5'> 

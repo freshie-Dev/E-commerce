@@ -3,7 +3,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import { LuSettings } from "react-icons/lu";
 import styled from "styled-components";
+import UserContextProvider from "../../context/UserContext";
 export default function Settings() {
+  
+  const {editableInfo} = UserContextProvider();
     const navigate = useNavigate();
   let [trigger, setTrigger] = useState(true);
 
@@ -15,18 +18,18 @@ export default function Settings() {
 
   return (
     <Wrapper>
-      <div
-        className={`flex items-center justify-between relative ${
+      <div 
+        className={`hidden lg:flex items-center justify-between relative ${
           trigger ? "overflow-hidden" : " overflow-visible"
         } duration-300 min-w-[170px]`}
       >
-        <p className="mx-2">Hello, Ahmad Ali</p>
-        <LuSettings size={35} className="rotateBack icon-setting" onClick={addClass} />
-        <div className="absolute bottom-[-350%] right-0 bg-[#67686D] text-[#E0E0E0] py-2 px-3 w-full rounded-xl ">
+        <p className="mx-2 min-w-max">Hello, Ahmad Ali</p>
+        <LuSettings size={35} className=" rotateBack icon-setting" onClick={addClass} />
+        <div className="absolute md:bottom-[-350%] bottom-[-350%] right-0 bg-[#67686D] text-[#E0E0E0] py-2 px-3 w-full rounded-xl ">
           <ul>
-            <li><NavLink to='/account/details'>Account Details</NavLink></li>
+            <li><NavLink to='/details'>Account Details</NavLink></li>
 
-            <li><NavLink to="/account/orders">Your Orders</NavLink></li>
+            <li><NavLink to="/orders">Your Orders</NavLink></li>
             
             <li className="" onClick={() => {
                 localStorage.removeItem("token");
@@ -38,6 +41,7 @@ export default function Settings() {
           </ul>
         </div>
       </div>
+
     </Wrapper>
   );
 }

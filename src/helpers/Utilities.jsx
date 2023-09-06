@@ -36,4 +36,8 @@ const FormatDate = (dateStr)=> {
   )
 }
 
-export { truncate, getWordStr, FormatPrice, capitalize, FormatDate };
+function maskPassword(password) {
+  return '⚹'.repeat(password.length);
+}
+
+export { truncate, getWordStr, FormatPrice, capitalize, FormatDate, maskPassword };

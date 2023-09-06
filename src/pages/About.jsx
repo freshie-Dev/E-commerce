@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 
 export default function About() {
   return (
-    <div>
+    <div className='mt-[100px]'>
       <h1>About</h1>
       {/* {
         products.map((product, index) => {

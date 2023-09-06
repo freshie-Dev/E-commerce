@@ -1,59 +1,110 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from "styled-components"
 import UserContextProvider from '../../context/UserContext'
+import axios from 'axios';
 import { FormatDate } from '../../helpers/Utilities';
+import { Pulsar } from '@uiball/loaders';
 
 export default function Orders() {
 
  
-  const {fetchOrders, userOrders} = UserContextProvider();
+  // const {fetchInfo, userOrders} = UserContextProvider();
+  // const [loading, setLoading] = useState(true);
+  const [orders, setOrders] = useState();
 
-  useEffect(() => {
-    fetchOrders();
-  }, [])
   
 
-  if(!userOrders) {
-    console.log("from orders", userOrders)
-    return (
-      <div>
-                <h1 style={{textAlign: `center`, marginTop:`50px`}}>Please Login to view your orders</h1>
+  useEffect(() => {
+    const getData = async()=> {
+      const config = {
+        headers: {
+            "auth-token": localStorage.getItem('token')
+        }
+      }
+      const response = await axios.get("http://localhost:3000/register/userinfo", config);
+      const data = await response.data;
 
-      </div>
-    )
+      localStorage.setItem('orders', JSON.stringify(data.orders))
+    }
+    getData();
+
+    const localOrders = JSON.parse(localStorage.getItem('orders'))
+    setOrders(localOrders);
+    console.log(orders)
+  }, []);
+
+  if (!orders || orders === "[]") {
+    return <div className='main flex justify-center items-center h-[50vh]'>
+      <Pulsar/>
+      <h1 className='mx-3 md:text-2xl font-semibold'>Loading your Orders</h1>
+    </div>
   }
 
-
-
   return (
-    <div className='main'>
-      <h1 className="text-center">Orders</h1><br/>
-      {
-        userOrders.map((order, index) => {
-          return (
-            <div key={index} className=' border-red-300 border-8 m-2'>
-              <FormatDate date = {order.orderDate} />
-              {order.items.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <p>{item.name}</p>
-                    <img src={item.imageUrl} width={100} height={150}></img>
-                    <p>{item.price}</p>
-                    <p>{item.quantity}</p>
-                    <p>{item.color}</p>
-                    <p>{item.brand}</p>
+    <Wrapper>
+      <div className='mt-[100px]'>
+        <h1 className="text-center text-2xl font-semibold mt-10">{orders.length} Orders found</h1><br/>
+        <div className={` flex flex-col-reverse `}>
+          {
+            orders.map((order, index) => {
+              return (
+                <div key={index} className=' -2 inset-shadow md:p-[50px] p-[10px] rounded-[50px] my-3 '>
+                  <p className='text-center'>Order # {index}</p>
+                  <p className='text-center font-bold py-3'><FormatDate date = {order.orderDate} /></p>
+                  <div className='grid xl:grid-cols-2 gap-10 offset-shadow py-5 px-8 rounded-[50px]'>
+                    {order.items.map((item, index) => {
+                      return (
+                        <div>
+                          <p className='font-semibold text-lg'>Item: {index+1}</p>
+                          <div key={index} className='flex my-3  '>
+                          <img className=' min-w-[100px] max-h-[150px]' src={item.imageUrl} width={100} height={150}></img>
+                          <div>
+                            <table>
+                            <tr>
+                              <th className=''>Name:</th>
+                              <td><p className='font-semibold'>{item.name}</p></td>
+                            </tr>
+                            <tr>
+                              <th>Quantity:</th>
+                              <td> <p>{item.quantity}</p></td>
+                            </tr>
+                            <tr>
+                              <th>Color:</th>
+                              <td> <p>{item.color}</p></td>
+                            </tr>
+                            <tr>
+                              <th>Brand:</th>
+                              <td> <p>{item.brand}</p></td>
+                            </tr>
+                            <tr>
+                              <th>Price:</th>
+                              <td> <p>{item.price}</p></td>
+                            </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <hr className='hr'/>
+                        </div>
+                      )
+                    })}
                   </div>
-                )
-              })}
-          </div>
-          )
-          
-        })
-      }
+              </div>
+              )
+              
+            })
+          } 
+        </div>
     </div>
+    </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
+  th,td {
+    padding: 5px;
+    text-align: left;
+  }
+  main {
 
+  }
 `

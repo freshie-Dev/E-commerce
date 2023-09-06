@@ -13,7 +13,7 @@ export default function Products() {
 
   return (
     <Wrapper>
-    <div className='main grid md:grid-cols-[0.2fr,1fr] grid-cols-1'>
+    <div className='inset-shadow rounded-[50px] p-3 my-[80px] grid md:grid-cols-[0.2fr,1fr] grid-cols-1 mt-[100px]'>
         <FilterSection />
       <div>
         <Sort />

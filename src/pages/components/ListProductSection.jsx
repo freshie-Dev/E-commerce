@@ -21,13 +21,13 @@ export default function ListProductSection() {
                                 <img style={{mixBlendMode: "multiply" }} src={product.imageUrl} alt={product.title} className='w-[250px] h-[250px] object-contain pb-[0px]'/>
                             
                                 <div className='py-5'>
-                                    <h1 className='font-bold  color-gray py-1'>{getWordStr(product.name)}</h1>
-                                    <p className=' color-gray py-1'><FormatPrice price = {product.price} /></p>
+                                    <h1 className='font-bold    py-1'>{getWordStr(product.name)}</h1>
+                                    <p className='   py-1'><FormatPrice price = {product.price} /></p>
                                 
                                     <p className='text-sm text-gray-500 py-1'>{truncate(product.description, 100)}</p>
                                     <span className='my-2'>
                                         <div className=' float-left py-2'><StarRating rating = {product.ratings.stars}/></div>
-                                        <p className=' float-right color-gray py-2'>{`(${product.ratings.reviews})`}</p>
+                                        <p className=' float-right   py-2'>{`(${product.ratings.reviews})`}</p>
                                     </span>
                                 </div>
                             </NavLink>

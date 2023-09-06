@@ -58,10 +58,10 @@ export default function SingleProduct() {
           <Images image={imageUrl} price={price}/>
         </div>
         <div className='md:w-[50%] p-3  text:lg md:text-xl'>
-          <h1 className='font-semibold text-2xl md:text-3xl my-1 md:my-[20px] color-gray'>{name}</h1>
-          <p className='md:hidden block font-semibold color-gray  my-3'>{<FormatPrice price = {price} />}</p>
+          <h1 className='font-semibold text-2xl md:text-3xl my-1 md:my-[20px]  '>{name}</h1>
+          <p className='md:hidden block font-semibold    my-3'>{<FormatPrice price = {price} />}</p>
 
-          <p className='color-gray font-light text-left my-1 md:my-[20px]'>{description}</p>
+          <p className='  font-light text-left my-1 md:my-[20px]'>{description}</p>
 
           {/* <p className=' my-1 md:my-[20px]'>{rating.rate}<br/>{rating.count} Reviews</p> */}
           <div className='flex flex-row items-center'>
@@ -70,7 +70,7 @@ export default function SingleProduct() {
           </div>
 
           <div className='flex my-3 items-center '>
-            <p className='font-semibold color-gray'>Select a Color: </p>
+            <p className='font-semibold  '>Select a Color: </p>
             {colors.map((color, index) => (
               <span
                 key={index}
@@ -85,7 +85,7 @@ export default function SingleProduct() {
             ))}
           </div>
 
-          <p className='md:block hidden font-semibold color-gray  my-4'>{<FormatPrice price = {price} />}</p>
+          <p className='md:block hidden font-semibold    my-4'>{<FormatPrice price = {price} />}</p>
           
           <hr className="my-4 border-t-2 border-[#C6C6C6] mt-[30px]" />
 
@@ -101,7 +101,7 @@ export default function SingleProduct() {
 
           <hr className="mb-4 border-t-2 border-[#C6C6C6]" />
 
-          <div className='grid gap-3 grid-cols-2 md:grid-cols-4 my-[20px] md:my-[30px] color-gray'>
+          <div className='grid gap-3 grid-cols-2 md:grid-cols-4 my-[20px] md:my-[30px]  '>
             <div className='text-center'>
               <FaTruck className='text-3xl mx-auto'/>
               <p className='text-sm'>Free Delievery</p>

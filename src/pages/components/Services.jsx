@@ -13,21 +13,21 @@ export default function Services() {
     <Wrapper>
         <div className='flex w-full justify-center items-center main'>
             <div className='flex md:flex-row flex-col'>
-                <div className='item mx-5  color-gray'>
+                <div className='item mx-5   '>
                     <span className='logo'><AiOutlineSafetyCertificate size={40}/></span>
                     <p className=' text-center mt-3 font-thin'>Super Fast and Free Delivery</p>
                 </div>
                 <div className='flex flex-col mx-5'>
-                    <div className='item md:mb-[30px]  color-gray'>
+                    <div className='item md:mb-[30px]   '>
                         <span className='logo'><FaShippingFast size={40}/></span>
                         <p  className=' text-center mt-3 font-thin'>Non-contact Shipping</p>
                     </div>
-                    <div className='item  color-gray'>
+                    <div className='item   '>
                         <span className='logo'><GiReceiveMoney size={40}/></span>
                         <p  className=' text-center mt-3 font-thin'>Money-back Guarantee</p>
                     </div>
                 </div>
-                <div className='item mx-5 md:br-round bb-round color-gray'>
+                <div className='item mx-5 md:br-round bb-round  '>
                     <span className='logo'><RiSecurePaymentLine size={40}/></span>
                     <p  className=' text-center mt-3 font-thin'>Super Secure Payment System</p>
                 </div>
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
         inset -5px -5px 10px #ffffff;
     }
     .logo {
-        color: #495261;
+        color: #434343;
         padding: 10px;
         border-radius: 5px;
         background: linear-gradient(145deg, #f0f0f0, #cacaca);

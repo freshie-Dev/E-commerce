@@ -38,7 +38,7 @@ export default function FilterSection() {
                         return (
                             <button key={index}  name="category" onClick={updateFilterValue} value={item} 
                             
-                                className={`duration-300 block color-gray font-light ${category === item ? "offset-shadow p-2 rounded-full min-w-[100px]" : null}`}>
+                                className={`duration-300 block   font-light ${category === item ? "offset-shadow p-2 rounded-full min-w-[100px]" : null}`}>
                                 
                                 {capitalize(item)}
                             </button>
@@ -49,7 +49,7 @@ export default function FilterSection() {
             <div className='pb-3'>
                 <h3 className='mb-2 font-semibold'>Brand</h3>
                 <div>
-                    <select name="brand" id="brand" onChange={updateFilterValue} className='color-gray font-light p-2 rounded-full dropdownButton button'>
+                    <select name="brand" id="brand" onChange={updateFilterValue} className='  font-light p-2 rounded-full dropdownButton button'>
                         {uniqueBrandValue.map((item, index) => {
                             return (
                                 <option name="brand" key={index} value={item}>{capitalize(item)}</option>
@@ -85,7 +85,7 @@ export default function FilterSection() {
             </div>
             <div className='mb-3'>
                 <h3 className='mb-2 font-semibold'>Price</h3>
-                <p className='font-light color-gray pb-1'><FormatPrice  price={price} /></p>
+                <p className='font-light   pb-1'><FormatPrice  price={price} /></p>
                 <input type="range" name='price' min={minPrice} max={maxPrice} value={price} onChange={updateFilterValue} className='range-style' />
             </div>
             <div>
@@ -93,6 +93,7 @@ export default function FilterSection() {
                     <button>Clear Filters</button>
                     <LuFilterX size={20}/>
                 </div>
+                <hr  className='hr'/>
             </div>
         </Wrapper>
   )

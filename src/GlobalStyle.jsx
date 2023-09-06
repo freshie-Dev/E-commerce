@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
         padding: 3% 3%;
         background-color: ${({theme}) => theme.colors.bgc};
         font-family: 'Ubuntu', sans-serif;
-        text-gray-700
     }
     .main {
       margin: 50px 0 50px;
@@ -29,9 +28,6 @@ const GlobalStyle = createGlobalStyle`
       background: #e0e0e0;
       box-shadow:  5px 5px 10px #bebebe,
                    -5px -5px 10px #ffffff;
-    }
-    .color-gray{
-        color: #434343;
     }
     //~ ///////////////////// for inset-offset inputs/////////////////////
     .input {
@@ -174,8 +170,22 @@ const GlobalStyle = createGlobalStyle`
           box-shadow: 2px 2px 5px #bebebe, -2px -2px 5px #ffffff;
         }
       }
-      //~ ///////////////////////////// for range input /////////////////////////////
-      
+      //~ ///////////////////////////// for HR /////////////////////////////
+      .hr {
+        border: 0;
+        border-bottom: 2px dashed #CACACA;
+      }
+      p {
+        color: #7d7f84;
+      }
+      .dark {
+        color: #49494b;
+      }
+      .active {
+        color: #65676c;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
       `;
 
 export default GlobalStyle;

@@ -7,7 +7,7 @@ export default function PageNavigation(props) {
   return (
     <Wrapper>
         <div className='main-offset flex items-center'>
-            <NavLink to="/products" className="font-semibold text-xl md:text-3xl color-gray" >Products/ </NavLink><span className='md:text-xl text-lg color-gray'>{category}</span>
+            <NavLink to="/products" className="font-semibold text-xl md:text-3xl  " >Products/ </NavLink><span className='md:text-xl text-lg  '>{category}</span>
         </div>
     </Wrapper>
   )

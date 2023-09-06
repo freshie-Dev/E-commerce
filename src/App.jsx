@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Routes, Route, BrowserRouter as Router, useLocation, Navigate, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Routes, Route, BrowserRouter as Router} from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -23,8 +23,7 @@ import Orders from './pages/components/Orders'
 
 
 function App() {
-  
-
+ 
   const theme = {
     colors: {
       bgc: "#E0E0E0",
@@ -54,12 +53,8 @@ function App() {
               <Route path = "/cart" element= {<Cart/>}/>
               {/* 404 */}
               <Route path = "*" element= {<ErrorPage/>}/>
-              
-              <Route path="/account" element={<Account />}>
-                <Route path="/account/details" element={<Details />} />
-                <Route path='/account/orders' element={<Orders />}>
-                </Route>
-              </Route>
+              <Route path="/details" element={<Details />} />
+              <Route path='/orders' element={<Orders />}/>
 
             </Routes>
             <Footer />
