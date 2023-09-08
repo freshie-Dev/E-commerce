@@ -31,14 +31,14 @@ export default function FilterSection() {
                     <input type="text" name="text" id="text" value={text} onChange={updateFilterValue} placeholder="Search" className='button' />
                 </form>
             </div>
-            <div className='pb-3'>
-                <h3 className='mb-2 font-semibold'>Category</h3>
+            <div className='pb-3 light'>
+                 <h1 className='mb-2 font-semibold'>Category</h1>
                 <div>
                     {uniqueCategoryValue.map((item, index) => {
                         return (
                             <button key={index}  name="category" onClick={updateFilterValue} value={item} 
                             
-                                className={`duration-300 block   font-light ${category === item ? "offset-shadow p-2 rounded-full min-w-[100px]" : null}`}>
+                                className={`duration-300 block     ${category === item ? "offset-shadow p-2 rounded-full min-w-[100px]" : null}`}>
                                 
                                 {capitalize(item)}
                             </button>
@@ -47,9 +47,9 @@ export default function FilterSection() {
                 </div>
             </div>
             <div className='pb-3'>
-                <h3 className='mb-2 font-semibold'>Brand</h3>
+                 <h1 className='mb-2 font-semibold'>Brand</h1>
                 <div>
-                    <select name="brand" id="brand" onChange={updateFilterValue} className='  font-light p-2 rounded-full dropdownButton button'>
+                    <select name="brand" id="brand" onChange={updateFilterValue} className='    p-2 rounded-full dropdownButton button'>
                         {uniqueBrandValue.map((item, index) => {
                             return (
                                 <option name="brand" key={index} value={item}>{capitalize(item)}</option>
@@ -61,7 +61,7 @@ export default function FilterSection() {
                 </div>
             </div>
             <div className='pb-3'>
-                <h3 className='mb-2 font-semibold'>Color</h3>
+                 <h1 className='mb-2 font-semibold'>Color</h1>
                 <div className='flex items-center'>
                     {uniqueColorValue.map((item, index) => {
                         return (
@@ -74,18 +74,18 @@ export default function FilterSection() {
                             style={{backgroundColor: item, opacity: colors===item ? "100" : null}} 
 
                             className=  {`duration-300 mx-[2px] ${item === "all" ? "w-[30px] h-[30px] opacity-100": " opacity-40"}
-                                        font-light w-[20px] h-[20px] rounded-full ${colors === item ? "offset-shadow": null}  hover:opacity-100`}
+                                          w-[20px] h-[20px] rounded-full ${colors === item ? "offset-shadow": null}  hover:opacity-100`}
                             >
 
-                            { item === "all" ? "All" : colors === item ? <FaCheck className='mx-auto text-gray-400' size={10}/> : null}
+                            { item === "all" ? <h1>All</h1> : colors === item ? <FaCheck className='mx-auto text-gray-400' size={10}/> : null}
                             </button>
                         )
                     })}
                 </div>
             </div>
             <div className='mb-3'>
-                <h3 className='mb-2 font-semibold'>Price</h3>
-                <p className='font-light   pb-1'><FormatPrice  price={price} /></p>
+                 <h1 className='mb-2 font-semibold'>Price</h1>
+                <p className='   pb-1'><FormatPrice  price={price} /></p>
                 <input type="range" name='price' min={minPrice} max={maxPrice} value={price} onChange={updateFilterValue} className='range-style' />
             </div>
             <div>

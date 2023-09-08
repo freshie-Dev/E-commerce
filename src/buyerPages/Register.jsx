@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+import Login from './buyerComponents/Login'
+import SignUp from './buyerComponents/SignUp'
 import styled from 'styled-components'
 
 export default function Register() {

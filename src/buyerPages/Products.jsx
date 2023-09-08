@@ -1,12 +1,12 @@
 import React from 'react'
-import ProductSection from './components/ProductSection';
+import ProductSection from './buyerComponents/ProductSection';
 import FilterContextProvider from '../context/FilterContext';
-import ListProductSection from './components/ListProductSection';
+import ListProductSection from './buyerComponents/ListProductSection';
 
 import styled from 'styled-components';
 
-import Sort from './components/Sort';
-import FilterSection from './components/FilterSection';
+import Sort from './buyerComponents/Sort';
+import FilterSection from './buyerComponents/FilterSection';
 
 export default function Products() {
   const {gridView} = FilterContextProvider();

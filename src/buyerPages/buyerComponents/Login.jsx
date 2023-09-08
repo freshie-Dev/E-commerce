@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import UserContextProvider from '../../context/UserContext';
 
 export default function Login() {
-    const {loggedInUser,setLoggedInUser} = UserContextProvider();
+    const {loggedInUser,setLoggedInUser, setUserType, userType} = UserContextProvider();
     let navigate = useNavigate();
     const [User, setUser] = useState({
         email: '',
@@ -24,6 +24,7 @@ export default function Login() {
         const data = await (response.data)
         console.log(data)
         localStorage.setItem('token', data.token)
+        localStorage.setItem('userType', data.foundUser.type)
         setLoggedInUser({
             name: data.foundUser.name,
             email: data.foundUser.email,
@@ -31,11 +32,10 @@ export default function Login() {
             type: data.foundUser.type,
             orders: data.foundUser.orders,
           })
-        
-        console.log("from login",loggedInUser)
+          
         // console.log(data.token)
-
-        navigate('/');
+            navigate('/');
+        
 
 
     };

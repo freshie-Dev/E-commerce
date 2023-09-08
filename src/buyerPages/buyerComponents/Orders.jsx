@@ -25,15 +25,15 @@ export default function Orders() {
       const data = await response.data;
 
       localStorage.setItem('orders', JSON.stringify(data.orders))
+      const localOrders = JSON.parse(localStorage.getItem('orders'))
+      setOrders(localOrders);
+      console.log(orders)
     }
     getData();
 
-    const localOrders = JSON.parse(localStorage.getItem('orders'))
-    setOrders(localOrders);
-    console.log(orders)
   }, []);
 
-  if (!orders || orders === "[]") {
+  if (!orders ) {
     return <div className='main flex justify-center items-center h-[50vh]'>
       <Pulsar/>
       <h1 className='mx-3 md:text-2xl font-semibold'>Loading your Orders</h1>
@@ -54,9 +54,9 @@ export default function Orders() {
                   <div className='grid xl:grid-cols-2 gap-10 offset-shadow py-5 px-8 rounded-[50px]'>
                     {order.items.map((item, index) => {
                       return (
-                        <div>
+                        <div key={index} >
                           <p className='font-semibold text-lg'>Item: {index+1}</p>
-                          <div key={index} className='flex my-3  '>
+                          <div className='flex my-3  '>
                           <img className=' min-w-[100px] max-h-[150px]' src={item.imageUrl} width={100} height={150}></img>
                           <div>
                             <table>

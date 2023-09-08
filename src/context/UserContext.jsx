@@ -60,19 +60,40 @@ const UserProvider = ({children}) => {
         setInfo(data)
         
         localStorage.setItem('orders', data.orders)
-        console.log("local storage", userInfo)
-        // setUserInfo({
-        //     name: data.name,
-        //     email: data.email,
-        //     password: data.password,
-        //     type: data.type,
-        // })
         console.log(data)
     }
     function setInfo(data) {
         setUserInfo(data)
     }
 
+    //! Sumbit rating values
+    const submitReview = async (stars, reviews, productId)=> {
+        // console.log(stars, reviews, productId)
+        const review = {
+            stars,
+            reviews,
+            productId
+        }
+        const config = {
+            headers: {
+                'auth-token': localStorage.getItem('token')
+            }
+        }
+        const response = await axios.post("http://localhost:3000/register/review", review, config);
+        const data = await response.data;
+        console.log("review is: ", data);
+    }
+    //! Fetch all revies of a product
+    const fetchReviews = async (productId) => {
+        const id = {
+            productId 
+        }
+        const response = await axios.get("http://localhost:3000/products/fetchreviews", id )
+        const data = await response.data;
+        console.log("these are all reviews",data)
+    }
+
+    //! Fetch user type - Login.jsx
     
     return (
         <UserContext.Provider value={{
@@ -83,7 +104,9 @@ const UserProvider = ({children}) => {
             userOrders,
             userInfo,
             editableInfo,
-            setEditableInfo
+            setEditableInfo,
+            submitReview,
+            fetchReviews,
         }}>
             {children}
         </UserContext.Provider>

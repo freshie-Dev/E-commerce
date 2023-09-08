@@ -12,8 +12,8 @@
 // import cartContextProvider from "../context/CartContext";
 // import UserContextProvider from "../context/UserContext";
 
-// import Menu from "./components/Menu";
-// import Settings from "./components/Settings";
+// import Menu from ". /buyerComponents/Menu";
+// import Settings from ". /buyerComponents/Settings";
 
 // export default function Navbar() {
 
@@ -199,8 +199,8 @@ import Cart from "./Cart";
 import cartContextProvider from "../context/CartContext";
 import UserContextProvider from "../context/UserContext";
 
-import Menu from "./components/Menu";
-import Settings from "./components/Settings";
+import Menu from "./buyerComponents/Menu";
+import Settings from "./buyerComponents/Settings";
 
 export default function Navbar() {
   const { loggedInUser, editableInfo } = UserContextProvider();
@@ -229,9 +229,9 @@ export default function Navbar() {
   //! -------------------------------------------------------------------
   return (
     <Wrapper>
-      <div className="flex fixed top-[0px] left-0 w-full justify-between items-center navbar px-[30px] h-[90px] text-[#67686d]">
+      <div className="flex fixed top-[0px] left-0 w-full justify-between items-center navbar px-[30px] h-[90px]">
         <div className="flex justify-between items-center w-full">
-          <h1 className="md:text-5xl md:font-bold text-2xl font-semibold">
+          <h1 className="md:text-5xl md:font-bold text-2xl font-semibold dark">
             Navbar
           </h1>
 
@@ -241,7 +241,7 @@ export default function Navbar() {
             </div>
           ) : null}
 
-          <ul className="hidden lg:flex font-normal">
+          <ul className="hidden lg:flex ">
             <li className={`px-2 ${location.pathname === "/" ? "active" : ""}`}>
               <NavLink to="/" element={<Home />}>
                 Home
@@ -266,7 +266,7 @@ export default function Navbar() {
               <NavLink to="/cart" element={<Cart />}>
                 <AiOutlineShoppingCart size={25} />
               </NavLink>
-              <p className="absolute flex justify-center items-center top-[-15px] right-[-10px] bg-gray-600 w-6 h-6 rounded-full">
+              <p className="absolute flex justify-center items-center top-[-15px] right-[-10px] bg-gray-600 text-gray-300 w-6 h-6 rounded-full">
                 {totalItems}
               </p>
             </li>

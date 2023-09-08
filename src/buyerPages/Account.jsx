@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useLocation } from 'react-router-dom';
-import Details from './components/Details';
-import Orders from './components/Orders';
+import Details from './buyerComponents/Details';
+import Orders from './buyerComponents/Orders';
 import UserContextProvider from '../context/UserContext';
 
 export default function Account() {
@@ -13,9 +13,9 @@ export default function Account() {
   }, [])
   let content = null;
 
-  if (location === "/account/details") {
+  if (location === "/details") {
     content = <Details />;
-  } else if (location === "/account/orders") {
+  } else if (location === "/orders") {
     content = <Orders />;
   }
 

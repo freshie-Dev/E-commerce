@@ -7,7 +7,7 @@ const HoverButton = styled.button`
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : "350px")};
   min-width: ${(props) => (props.minWidth ? props.minWidth : "max-content")};
   box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff;
-  color: ${(props) => (props.color ? props.color : "#95979d")};
+  color: ${(props) => (props.color ? props.color : "#888a90")};
   margin: ${(props) => (props.margin ? props.margin : "10px 20px")};
   padding: ${(props) => (props.padding ? props.padding : "10px 20px")};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "1.2rem")};

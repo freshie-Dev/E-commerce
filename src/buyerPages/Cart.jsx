@@ -6,11 +6,11 @@ import cartContextProvider from '../context/CartContext';
 
 
 import cartBG from '../assets/cartBG.jpg'
-import CartItems from './components/CartItems';
+import CartItems from './buyerComponents/CartItems';
 import { NavLink, useNavigate } from 'react-router-dom';
 import FormatPrice from '../helpers/FormatPrice';
 import UserContextProvider from '../context/UserContext';
-import { HoverButton } from './components/Styles';
+import { HoverButton } from './buyerComponents/Styles';
 
 export default function Cart() {
   const {cart, clearCart, totalPrice, orderTotal, shippingFee} = cartContextProvider();
@@ -19,14 +19,15 @@ export default function Cart() {
   let navigate = useNavigate();
 
   localStorage
-  if (localStorage.getItem('cart').length === 2) {
-    return ( 
+  if (localStorage.getItem('cart') === null || localStorage.getItem('cart').length === 2) {
+    return (
       <Wrapper>
         <div className='flex flex-col justify-center items-center main'>
           <h1 className=' text-2xl   font-semibold'>No Items in Cart</h1>
-          <HoverButton maxWidth = '200px' minWidth = 'max-content'>Browse Products</HoverButton>
+          <HoverButton onClick={()=> navigate('/products')} maxWidth = '200px' minWidth = 'max-content'>Browse Products</HoverButton>
+          <div className='h-6'></div>
           <h1 className=' text-2xl   font-semibold'>Check your orders</h1>
-          <HoverButton maxWidth = '200px' minWidth = 'max-content'>Orders</HoverButton>
+          <HoverButton onClick={()=> navigate('/orders')} maxWidth = '200px' minWidth = 'max-content'>Orders</HoverButton>
         </div>
       </Wrapper>
     )

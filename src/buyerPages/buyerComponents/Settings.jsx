@@ -18,21 +18,21 @@ export default function Settings() {
 
   return (
     <Wrapper>
-      <div 
+      <div
         className={`hidden lg:flex items-center justify-between relative ${
           trigger ? "overflow-hidden" : " overflow-visible"
         } duration-300 min-w-[170px]`}
       >
         <p className="mx-2 min-w-max">Hello, Ahmad Ali</p>
-        <LuSettings size={35} className=" rotateBack icon-setting" onClick={addClass} />
-        <div className="absolute md:bottom-[-350%] bottom-[-350%] right-0 bg-[#67686D] text-[#E0E0E0] py-2 px-3 w-full rounded-xl ">
+        <LuSettings size={35} className=" rotateBack icon-setting dark" onClick={addClass} />
+        <div className="absolute md:bottom-[-350%] bottom-[-350%] right-0 bg-[#8194aa] text-[#cecccc] py-2 px-3 w-full rounded-xl ">
           <ul>
             <li><NavLink to='/details'>Account Details</NavLink></li>
 
             <li><NavLink to="/orders">Your Orders</NavLink></li>
             
             <li className="" onClick={() => {
-                localStorage.removeItem("token");
+                localStorage.clear();
                 navigate("/register");
               }}>
               Log out

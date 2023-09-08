@@ -24,9 +24,9 @@ export default function Footer() {
                 </form>
             </div>
             <div className='flex justify-evenly items-center w-[40%] min-w-[250px] py-[20px]'>
-                <Link target='_blank' to="https://www.facebook.com/profile.php?id=100004357007777"><AiOutlineFacebook size={40}/></Link>
-                <Link target='_blank' to="https://www.instagram.com/haye.hi.high/"><AiOutlineInstagram size={40}/></Link>
-                <Link target='_blank' to="https://twitter.com/a_4ahmadd"><AiOutlineTwitter size={40}/></Link>
+                <Link className='light' target='_blank' to="https://www.facebook.com/profile.php?id=100004357007777"><AiOutlineFacebook size={40}/></Link>
+                <Link className='light' target='_blank' to="https://www.instagram.com/haye.hi.high/"><AiOutlineInstagram size={40}/></Link>
+                <Link className='light' target='_blank' to="https://twitter.com/a_4ahmadd"><AiOutlineTwitter size={40}/></Link>
             </div>
         </div>
     </Wrapper>

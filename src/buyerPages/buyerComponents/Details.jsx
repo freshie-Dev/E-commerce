@@ -75,19 +75,21 @@ useEffect (()=> {
       data: data.createdAt
     }
     localStorage.setItem('userDetails', JSON.stringify(userDetails))    
+    let localDetails = JSON.parse(localStorage.getItem('userDetails'))
+    setDetails(localDetails)
+    setEditableInfo({
+      name: localDetails.name,
+      password: localDetails.password,
+    })
   }
   getData();
-  const localDetails = JSON.parse(localStorage.getItem('userDetails'))
-  setDetails(localDetails)
-  setEditableInfo({
-    name: localDetails.name,
-    password: localDetails.password,
-  })
+
+
 },[])
 
 
 
-if (!details || details === "[]") {
+if (!details ) {
   return <div className='main flex justify-center items-center h-[50vh] mt-[100px]'>
     <Pulsar/>
     <h1 className='mx-3 md:text-2xl font-semibold'>Loading your Details</h1>

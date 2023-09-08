@@ -172,14 +172,14 @@ const GlobalStyle = createGlobalStyle`
       }
       //~ ///////////////////////////// for HR /////////////////////////////
       .hr {
-        border: 0;
+        border: 3;
         border-bottom: 2px dashed #CACACA;
       }
-      p {
-        color: #7d7f84;
+      .light, p {
+        color: #3A4750;
       }
-      .dark {
-        color: #49494b;
+      .dark, h1 {
+        color: #2D4059;
       }
       .active {
         color: #65676c;

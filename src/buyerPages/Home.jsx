@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import HeroPage from './components/HeroPage'
-import Services from './components/Services'
-import Footer from './components/Footer'
-import FeaturedProducts from './components/FeaturedProducts'
+import HeroPage from './buyerComponents/HeroPage'
+import Services from './buyerComponents/Services'
+import Footer from './buyerComponents/Footer'
+import FeaturedProducts from './buyerComponents/FeaturedProducts'
 
 export default function Home() {
 
