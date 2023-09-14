@@ -47,9 +47,14 @@ const FilterProvider = ({ children }) => {
     //! update the filter values
     const updateFilterValue = (event)=> {
         let {name, value} = event.target;
-        // console.log ("state", state.filters)
+        console.log(name, value)
 
         return dispatch({type: "UPDATE_FILTERS_VALUE", payload: {name, value}});
+    }
+
+    //! Reset colors filter
+    const resetColors = () => {
+        return dispatch({type: "RESET_COLORS"})
     }
 
     //! load filtered products when the filters change or sorted products when the sorting value changes
@@ -79,7 +84,8 @@ const FilterProvider = ({ children }) => {
                 setListView,
                 sortProducts,
                 updateFilterValue,
-                clearFilters
+                clearFilters,
+                resetColors
             }
             }>
             {children}

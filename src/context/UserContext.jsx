@@ -2,7 +2,6 @@
 import { createContext, useState, useContext } from "react";
 import cartContextProvider from "./CartContext";
 import axios from "axios";
-import { data } from "autoprefixer";
 
 
 const UserContext = createContext({});
@@ -90,7 +89,8 @@ const UserProvider = ({children}) => {
         }
         const response = await axios.get("http://localhost:3000/products/fetchreviews", id )
         const data = await response.data;
-        console.log("these are all reviews",data)
+        // console.log("these are all reviews",data)
+        console.log("this is the id of the reviewed item",id)
     }
 
     //! Fetch user type - Login.jsx

@@ -6,10 +6,9 @@ import cartContextProvider from '../context/CartContext';
 import PageNavigation from './buyerComponents/PageNavigation';
 import FormatPrice from '../helpers/FormatPrice';
 import Review from './buyerComponents/Review';
+import Stars from './buyerComponents/Stars';
 
 import {FaCheck} from 'react-icons/fa';
-
-// import free delievery, item replacement, warranty and secure payment icons react icons
 import {FaTruck, FaExchangeAlt, FaShieldAlt, FaRegCreditCard} from 'react-icons/fa';
 
 import styled from 'styled-components';
@@ -49,6 +48,7 @@ export default function SingleProduct() {
     const selectColor = (color) => {
       setSelectedColor(color)
     }
+    console.log(ratings)
 
   
 
@@ -85,6 +85,8 @@ export default function SingleProduct() {
           </div>
 
           <p className='md:block hidden font-semibold    my-4'>{<FormatPrice price = {price} />}</p>
+
+          <Stars rating = {ratings}/>
           
           <hr className="my-4 border-t-2 border-[#C6C6C6] mt-[30px]" />
 

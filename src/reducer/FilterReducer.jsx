@@ -107,6 +107,14 @@ const reducer = (state, action) => {
                 ...state,
                 filteredProducts: tempFilteredProducts
             }
+        case "RESET_COLORS":
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    colors: "all"
+                }
+            }
         case "CLEAR_FILTERS":
             return {
                 ...state,

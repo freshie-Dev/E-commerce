@@ -6,7 +6,7 @@ import {FaCheck} from 'react-icons/fa';
 import { FormatPrice, capitalize } from '../../helpers/Utilities';
 
 export default function FilterSection() {
-    const {filters:{text, category, colors, price, maxPrice, minPrice}, updateFilterValue, allProducts, clearFilters} = FilterContextProvider();
+    const {filters:{text, category, colors, price, maxPrice, minPrice}, updateFilterValue, allProducts, clearFilters,resetColors} = FilterContextProvider();
 
     const getUniqueCategory = (data, type) => {
         let unique = data.map ((item) => item[type])
@@ -17,6 +17,9 @@ export default function FilterSection() {
         let flatData = unique.flat(); 
 
         let uniqueFlatData = ["all", ...new Set(flatData)];
+        if (type === "colors"){
+            // console.log("the colors array is: ", uniqueFlatData)
+        }
         return uniqueFlatData;
     }
     const uniqueCategoryValue = getUniqueCategory(allProducts, "category");
@@ -64,13 +67,14 @@ export default function FilterSection() {
                  <h1 className='mb-2 font-semibold'>Color</h1>
                 <div className='flex items-center'>
                     {uniqueColorValue.map((item, index) => {
+                        console.log(item)
                         return (
                             <button 
                             type='button' 
                             key={index}  
                             name="colors" 
-                            onClick={updateFilterValue} value={item} 
-
+                            onClick={(e)=> {item === "all" ? resetColors() : updateFilterValue(e)}} 
+                            value={item} 
                             style={{backgroundColor: item, opacity: colors===item ? "100" : null}} 
 
                             className=  {`duration-300 mx-[2px] ${item === "all" ? "w-[30px] h-[30px] opacity-100": " opacity-40"}
@@ -79,6 +83,21 @@ export default function FilterSection() {
 
                             { item === "all" ? <h1>All</h1> : colors === item ? <FaCheck className='mx-auto text-gray-400' size={10}/> : null}
                             </button>
+                        //     <button
+                        //     type='button'
+                        //     key={index}
+                        //     name="colors"
+                        //     onClick={updateFilterValue}
+                        //     value={item} // Set value to "all" if it's the "All" button
+                        //     style={{ backgroundColor: item, opacity: colors === item ? "100" : null }}
+                        //     className={`duration-300 mx-[2px] ${
+                        //       item === "all" ? "w-[30px] h-[30px] opacity-100" : "opacity-40"
+                        //     } w-[20px] h-[20px] rounded-full ${
+                        //       colors === item ? "offset-shadow" : null
+                        //     }  hover:opacity-100`}
+                        //   >
+                        //     {item === "all" ? <h1>All</h1> : colors === item ? <FaCheck className='mx-auto text-gray-400' size={10} /> : null}
+                        //   </button>
                         )
                     })}
                 </div>

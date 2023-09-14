@@ -4,8 +4,10 @@ import UserStarRating from './UserStarRating'
 import styled  from 'styled-components'
 import { HoverButton } from './Styles'
 import UserContextProvider from '../../context/UserContext'
+import ProductContextProvider from '../../context/ProductContext'
 
 export default function ({ratings_, productId}) {
+    const {getSingleProduct} = ProductContextProvider();
     const {submitReview, fetchReviews} = UserContextProvider();
 
     const [rating, setRating] = useState(0)
@@ -35,7 +37,7 @@ export default function ({ratings_, productId}) {
             </div>
             <p className='w-[50%] my-3 '>Leave a review:</p>
             <textarea onChange={(e)=> setReview(e.target.value)} value={review} name='review' type="text" className='input  sm:w-[500px] w-full' />
-            <HoverButton onClick={()=> {submitReview(rating, review, productId)}} maxWidth = '100%' margin = "15px 0px" >Submit</HoverButton>
+            <HoverButton onClick={()=> {submitReview(rating, review, productId); getSingleProduct(productId)}} maxWidth = '100%' margin = "15px 0px" >Submit</HoverButton>
         </div>
         <h1 className='dark text-2xl md:text-4xl font-bold py-5 my-3'>Reviews</h1>
         <div className='flex flex-col'>

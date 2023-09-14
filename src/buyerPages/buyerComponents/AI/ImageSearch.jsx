@@ -1,34 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
-function ImageSearch() {
+function ImageUpload({ handleImageUpload }) {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [recognizedProducts, setRecognizedProducts] = useState([]);
 
-  const handleImageUpload = async (event) => {
-    const imageFile = event.target.files[0];
-
-    if (imageFile) {
-      const formData = new FormData();
-      formData.append('image', imageFile);
-
-      try {
-        const response = await axios.post('/api/recognize', formData);
-        setRecognizedProducts(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
   };
 
   return (
     <div>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      {recognizedProducts.map((product) => (
-        <div key={product.id}>{product.name}</div>
-      ))}
+      <input type="file" accept="image/*" onChange={handleFileChange} />
+      <button onClick={() => handleImageUpload(selectedImage)}>Upload Image</button>
     </div>
   );
 }
 
-export default ImageSearch;
+export default ImageUpload;
