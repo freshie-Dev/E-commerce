@@ -148,7 +148,7 @@ if (!details ) {
               {/* orders */}
               <tr>
                 <td><p>Your Orders:</p></td>
-                <td className='info'><NavLink to='/account/orders'><button className='button btn'>See Orders</button></NavLink></td>
+                <td className='info'><NavLink to='/orders'><button className='button btn'>See Orders</button></NavLink></td>
               </tr>
             </table> 
           </div>
