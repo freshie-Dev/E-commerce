@@ -35,7 +35,8 @@ function App() {
       {/* <Router basename='/E-commerce'> */}
       <Router>
         <GlobalStyle />
-        {userType === "buyer" ? <Navbar />: "Navbar"}
+        {/* {userType === "buyer" ? <Navbar />: "Navbar"} */}
+        <Navbar/>
         <Routes>
          
           {userType === "seller" ? 
