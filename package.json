@@ -1,7 +1,7 @@
 {
-  "homepage": "https://freshie-dev.github.io/E-commerce/",
+  "homepage": "https://freshie-dev.github.io/E-commerce",
   "name": "e-commerce",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
