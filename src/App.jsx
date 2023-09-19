@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, HashRouter as Router } from 'react-router-dom';
 import './App.css';
 import './App.scss';
 import Home from './buyerPages/Home';
@@ -32,8 +32,8 @@ function App() {
  const check = true;
   return (
     <ThemeProvider theme={theme}>
-      <Router basename='/E-commerce'>
-      {/* <Router> */}
+      {/* <Router basename='/E-commerce'> */}
+      <Router>
         <GlobalStyle />
         {userType === "buyer" ? <Navbar />: "Navbar"}
         <Routes>
@@ -43,7 +43,7 @@ function App() {
             <Route path='/' element={<HomeSeller/>}/>
           </> :
           <>
-            <Route exact path='/E-commerce' element={<Home/>}/>
+            <Route exact path='/' element={<Home/>}/>
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
