@@ -32,8 +32,8 @@ function App() {
  const check = true;
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router basename='/E-commerce/'> */}
-      <Router>
+      <Router basename='/E-commerce/'>
+      {/* <Router> */}
         <GlobalStyle />
         {userType === "buyer" ? <Navbar />: "Navbar"}
         <Routes>
