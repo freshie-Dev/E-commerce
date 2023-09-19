@@ -6,6 +6,7 @@ import { FormatDate } from '../../helpers/Utilities';
 import { Pulsar } from '@uiball/loaders';
 
 export default function Orders() {
+  const url = "https://web-production-8eab.up.railway.app"
 
  
   // const {fetchInfo, userOrders} = UserContextProvider();
@@ -21,7 +22,7 @@ export default function Orders() {
             "auth-token": localStorage.getItem('token')
         }
       }
-      const response = await axios.get("http://localhost:3000/register/userinfo", config);
+      const response = await axios.get(`${url}/register/userinfo`, config);
       const data = await response.data;
 
       localStorage.setItem('orders', JSON.stringify(data.orders))

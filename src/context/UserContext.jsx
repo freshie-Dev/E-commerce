@@ -7,6 +7,7 @@ import axios from "axios";
 const UserContext = createContext({});
 
 const UserProvider = ({children}) => {
+    const url = "https://web-production-8eab.up.railway.app"
     const {clearCart} = cartContextProvider();
     const [loggedInUser, setLoggedInUser] = useState();
     const [userOrders, setUserOrders] = useState();
@@ -37,7 +38,7 @@ const UserProvider = ({children}) => {
             }
         });
         console.log(order);
-        const response = await axios.post("http://localhost:3000/register/addtocart", order, config )
+        const response = await axios.post(`${url}/register/addtocart`, order, config )
         const data = await response.data;
         setUserOrders(data.orders)
         console.log("from buy items",userOrders)
@@ -54,7 +55,7 @@ const UserProvider = ({children}) => {
                 "auth-token": localStorage.getItem('token')
             }
         }
-        const response = await axios.get("http://localhost:3000/register/userinfo", config)
+        const response = await axios.get(`${url}/register/userinfo`, config)
         const data = await response.data;
         setInfo(data)
         
@@ -78,7 +79,7 @@ const UserProvider = ({children}) => {
                 'auth-token': localStorage.getItem('token')
             }
         }
-        const response = await axios.post("http://localhost:3000/register/review", review, config);
+        const response = await axios.post(`${url}/register/review`, review, config);
         const data = await response.data;
         console.log("review is: ", data);
     }
@@ -87,7 +88,7 @@ const UserProvider = ({children}) => {
         const id = {
             productId 
         }
-        const response = await axios.get("http://localhost:3000/products/fetchreviews", id )
+        const response = await axios.get(`${url}/products/fetchreviews`, id )
         const data = await response.data;
         // console.log("these are all reviews",data)
         console.log("this is the id of the reviewed item",id)

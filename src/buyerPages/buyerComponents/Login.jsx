@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import UserContextProvider from '../../context/UserContext';
 
 export default function Login() {
+    const url = "https://web-production-8eab.up.railway.app"
     const {loggedInUser,setLoggedInUser, setUserType, userType} = UserContextProvider();
     let navigate = useNavigate();
     const [User, setUser] = useState({
@@ -20,7 +21,7 @@ export default function Login() {
     };
     const login = async (e) => {
         e.preventDefault();
-        const response = await axios.post('http://localhost:3000/register/login', User)
+        const response = await axios.post(`${url}/register/login`, User)
         const data = await (response.data)
         console.log(data)
         localStorage.setItem('token', data.token)

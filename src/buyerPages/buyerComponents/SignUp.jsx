@@ -8,6 +8,7 @@ import UserContextProvider from '../../context/UserContext';
 
 
 export default function SignUp() {
+  const url = "https://web-production-8eab.up.railway.app"
   const {loggedInUser, setLoggedInUser} = UserContextProvider();
   let navigate = useNavigate();
   // const { createUser, setSignupSwitch } = UserContextProvider();
@@ -36,7 +37,7 @@ export default function SignUp() {
       return
     }
     // createUser(user);
-    const response = await axios.post('http://localhost:3000/register', user)
+    const response = await axios.post(`${url}/register`, user)
     const data = await response.data;
 
     localStorage.setItem('token', data.token)

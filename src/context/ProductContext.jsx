@@ -9,7 +9,7 @@ import reducer from "../reducer/ProductReducer";
 
 const ProductProvider = ({children}) => {
     const [featuredProducts, setFeaturedProducts] = useState();
-    const url = "http://localhost:3000/products/" 
+    const url = "https://web-production-8eab.up.railway.app" 
 
     // const [state, dispatch] = useReducer(first, second, third)
     const initialState = {
@@ -27,10 +27,8 @@ const ProductProvider = ({children}) => {
     const getProducts = async () => {
         dispatch({type: "GET_LOADING"})
         try {
-            // const response = await axios.get(`${url}`); // Use async/await
-            const response = await axios.get(url); // Use async/await
+            const response = await axios.get(url + "/products"); // Use async/await
             const data = await response.data;
-            const json =  JSON.stringify(data);
             // console.log(data)
             dispatch({type: "SET_API_PRODUCTS", payload: data})
         } catch (error) {
@@ -43,7 +41,7 @@ const ProductProvider = ({children}) => {
     const getSingleProduct = async (id) => {
         dispatch({type: "GET_SINGLE_LOADING"})
         try {
-            const response = await axios.get(`http://localhost:3000/products/${id}`); // Use async/await
+            const response = await axios.get(`${url}/products/${id}`); // Use async/await
             const data = await response.data;
             // console.log(data)
             dispatch({type: "SET_API_SINGLE_PRODUCT", payload: data})

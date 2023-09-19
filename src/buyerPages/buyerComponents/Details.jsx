@@ -7,6 +7,7 @@ import { Pulsar } from '@uiball/loaders';
 import axios from 'axios';
 
 export default function Details() {
+  const url = "https://web-production-8eab.up.railway.app"
   const {editableInfo, setEditableInfo} = UserContextProvider();
   const [details, setDetails] = useState()
 
@@ -31,10 +32,10 @@ export default function Details() {
         name: editableInfo.name,
         password: editableInfo.password
       }
-      const response = await axios.put("http://localhost:3000/register/userinfo", newData,config)
+      const response = await axios.put(`${url}/register/userinfo`, newData,config)
       const data = await response.data;
       console.log(data);
-      const updatedResponse = await axios.get("http://localhost:3000/register/userinfo", config);
+      const updatedResponse = await axios.get(`${url}/register/userinfo`, config);
     const updatedData = await updatedResponse.data;
 
     // Update the component's state with the new data
@@ -64,7 +65,7 @@ useEffect (()=> {
           "auth-token": localStorage.getItem('token')
       }
     }
-    const response = await axios.get("http://localhost:3000/register/userinfo", config)
+    const response = await axios.get(`${url}/register/userinfo`, config)
     const data = await response.data;
 
     const userDetails = {
