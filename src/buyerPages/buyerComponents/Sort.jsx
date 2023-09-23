@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import {FaTh, FaList} from 'react-icons/fa';
 import FilterContextProvider from '../../context/FilterContext';
 import styled from 'styled-components';
+import { faLess } from '@fortawesome/free-brands-svg-icons';
 
 export default function Sort() {
-    const {filteredProducts, gridView, setGridView, setListView, sortProducts} = FilterContextProvider();
+    const {filteredProducts, gridView, setGridView, setListView, sortProducts, setFilterSlider, filterSlider} = FilterContextProvider();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   //! Effect to set new window width

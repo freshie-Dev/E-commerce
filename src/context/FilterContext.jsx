@@ -23,6 +23,7 @@ const initialState = {
 
 const FilterProvider = ({ children }) => {
     const { products } = ProductContextProvider();
+    const [filterSlider, setFilterSlider] = useState()
 
     const [state, dispatch] = useReducer(reducer, initialState);
     const [sortedProducts, setSortedProducts] = useState([...products]);
@@ -85,7 +86,9 @@ const FilterProvider = ({ children }) => {
                 sortProducts,
                 updateFilterValue,
                 clearFilters,
-                resetColors
+                resetColors,
+                filterSlider,
+                setFilterSlider,
             }
             }>
             {children}
