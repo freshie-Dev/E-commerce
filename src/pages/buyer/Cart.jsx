@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import cartContextProvider from '../context/CartContext';
+import cartContextProvider from '../../context/CartContext';
 
 
 
 
-import cartBG from '../assets/cartBG.jpg'
-import CartItems from './buyerComponents/CartItems';
+import CartItems from './CartItems';
 import { NavLink, useNavigate } from 'react-router-dom';
-import FormatPrice from '../helpers/FormatPrice';
-import UserContextProvider from '../context/UserContext';
-import { HoverButton } from './buyerComponents/Styles';
+import FormatPrice from '../../helpers/FormatPrice';
+import UserContextProvider from '../../context/UserContext';
+import { HoverButton } from '../../helpers/Styles';
 
 export default function Cart() {
   const {cart, clearCart, totalPrice, orderTotal, shippingFee} = cartContextProvider();

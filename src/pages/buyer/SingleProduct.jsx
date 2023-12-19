@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import {useParams, NavLink} from 'react-router-dom'
 
-import ProductContextProvider from '../context/ProductContext';
-import cartContextProvider from '../context/CartContext';
-import PageNavigation from './buyerComponents/PageNavigation';
-import FormatPrice from '../helpers/FormatPrice';
-import Review from './buyerComponents/Review';
-import Stars from './buyerComponents/Stars';
+import ProductContextProvider from '../../context/ProductContext';
+import cartContextProvider from '../../context/CartContext';
+import PageNavigation from './PageNavigation';
+import FormatPrice from '../../helpers/FormatPrice';
+import Review from './Review';
+import Stars from './Stars';
 
 import {FaCheck} from 'react-icons/fa';
 import {FaTruck, FaExchangeAlt, FaShieldAlt, FaRegCreditCard} from 'react-icons/fa';
 
 import styled from 'styled-components';
-import Images from './buyerComponents/Images';
+import Images from '../Images';
 
 
 export default function SingleProduct() {
@@ -24,7 +24,8 @@ export default function SingleProduct() {
 
 
     useEffect(() => {
-      getSingleProduct(numericId)
+      getSingleProduct(numericId);
+      console.log("asdfasdfadfasdfadsafdsasdaasfas", singleProduct);
     }, [])
     
     if (isSingleProductLoading) {

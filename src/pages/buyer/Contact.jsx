@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
-import { HoverButton } from './buyerComponents/Styles';
-import UserStarRating from './buyerComponents/UserStarRating';
+import { HoverButton } from '../../helpers/Styles';
 
 
 

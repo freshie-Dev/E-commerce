@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Ubuntu', sans-serif;
     }
     .main {
-      margin: 50px 0 50px;
+      margin: 100px 0 50px;
       padding: 50px;
       border-radius: 50px;
       background: #e0e0e0;
@@ -37,6 +37,15 @@ const GlobalStyle = createGlobalStyle`
         padding: 20px 20px;
         outline: none;
       }
+
+    .input-select {
+        background: #e0e0e0;
+        color: #696a6f;
+        border-radius: 40px;
+        padding: 10px 10px;
+        outline: none;
+      }
+
     .inset-shadow {
         box-shadow: inset 2px 2px 5px #bebebe,
                     inset -2px -2px 5px #ffffff;
@@ -46,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
                     -2px -2px 5px #ffffff;
       }
     
-      .input:hover, .input:focus {
+      .input:hover, .input:focus, .input-select:hover, .input-select:focus {
         animation: inputAnimation 0.3s forwards;
       }
       @keyframes inputAnimation {

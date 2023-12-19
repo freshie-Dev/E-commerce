@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineFacebook } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineTwitter } from 'react-icons/ai';
-import { HoverButton } from './Styles';
+import { HoverButton } from '../helpers/Styles';
 
 
 

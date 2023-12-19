@@ -9,7 +9,8 @@ import reducer from "../reducer/ProductReducer";
 
 const ProductProvider = ({children}) => {
     const [featuredProducts, setFeaturedProducts] = useState();
-    const url = "https://web-production-8eab.up.railway.app" 
+    // const url = "https://web-production-8eab.up.railway.app"
+    const url = "http://localhost:3000"
 
     // const [state, dispatch] = useReducer(first, second, third)
     const initialState = {
@@ -29,7 +30,7 @@ const ProductProvider = ({children}) => {
         try {
             const response = await axios.get(url + "/products"); // Use async/await
             const data = await response.data;
-            // console.log(data)
+            console.log("0000000000000000000000000000000", data)
             dispatch({type: "SET_API_PRODUCTS", payload: data})
         } catch (error) {
             dispatch({type: "GET_API_PRODUCTS_ERROR"})

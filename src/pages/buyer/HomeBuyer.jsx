@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import HeroPage from './buyerComponents/HeroPage'
-import Services from './buyerComponents/Services'
-import Footer from './buyerComponents/Footer'
-import FeaturedProducts from './buyerComponents/FeaturedProducts'
+import HeroPage from './HeroPage'
+import Services from './Services'
+import Footer from '../Footer'
+import FeaturedProducts from './FeaturedProducts'
 
-export default function Home() {
+export default function HomeBuyer() {
 
   const navigate = useNavigate()
 

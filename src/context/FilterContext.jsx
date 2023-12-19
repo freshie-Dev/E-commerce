@@ -60,7 +60,7 @@ const FilterProvider = ({ children }) => {
 
     //! load filtered products when the filters change or sorted products when the sorting value changes
     useEffect(() => {
-        dispatch({type: "FILTER_PRODUCTS"})
+        dispatch({type: "FILTER_PRODUCTS"});
         dispatch({type: "GET_SORTED_PRODUCTS"});
     }, [products, state.filters, state.sortingValue]);
 

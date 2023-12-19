@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useLocation } from 'react-router-dom';
-import Details from './buyerComponents/Details';
-import Orders from './buyerComponents/Orders';
-import UserContextProvider from '../context/UserContext';
+import Details from './Details';
+import Orders from './Orders';
+import UserContextProvider from '../../context/UserContext';
 
 export default function Account() {
   const location = useLocation().pathname;

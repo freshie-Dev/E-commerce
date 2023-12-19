@@ -1,9 +1,10 @@
 import React from 'react'
-import FormatPrice from '../../helpers/FormatPrice';
-import pic1 from '../../assets/pic-1.jpg';
-import pic2 from '../../assets/pic-2.jpg';
-import pic3 from '../../assets/pic-3.jpg';
-import pic4 from '../../assets/pic-4.jpg';
+import FormatPrice from '../helpers/FormatPrice';
+import pic1 from '../assets/pic-1.jpg';
+import pic2 from '../assets/pic-2.jpg';
+import pic3 from '../assets/pic-3.jpg';
+import pic4 from '../assets/pic-4.jpg';
+
 
 
 export default function Images(props) {

@@ -1,14 +1,14 @@
 import React from 'react'
-import ProductSection from './buyerComponents/ProductSection';
-import FilterContextProvider from '../context/FilterContext';
-import ListProductSection from './buyerComponents/ListProductSection';
+import ProductSection from './ProductSection';
+import FilterContextProvider from '../../context/FilterContext';
+import ListProductSection from './ListProductSection';
 
 import {RiFilter2Line} from 'react-icons/ri'
 
 import styled from 'styled-components';
 
-import Sort from './buyerComponents/Sort';
-import FilterSection from './buyerComponents/FilterSection';
+import Sort from './Sort';
+import FilterSection from './FilterSection';
 
 export default function Products() {
   const {gridView, filterSlider, setFilterSlider} = FilterContextProvider();
@@ -28,7 +28,7 @@ export default function Products() {
       </div>
       <div>
         <Sort />
-        <div className=''>
+        <div className=' overflow-auto'>
           { gridView ? <ProductSection /> : <ListProductSection />}
         </div>
       </div>

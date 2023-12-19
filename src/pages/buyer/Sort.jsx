@@ -32,11 +32,11 @@ export default function Sort() {
     <Wrapper>
         <div className='flex flex-row items-center justify-between px-10 my-5'>
             <div className='hidden sm:flex items-center'>
-                <button className=' mx-3' onClick={()=> {setGridView()}}><FaTh size={25} className={` duration-500 text-gray-600 ${gridView? "active": null}`}/></button>
-                <button className=' mx-3' onClick={()=> {setListView()}}><FaList size={25} className={` duration-500 text-gray-600  ${gridView? null: "active"}`}/></button>
+                <button className=' mx-3' onClick={()=> {setGridView()}}><FaTh size={25} className={` duration-500 text-gray-600 ${gridView? "text-white bg-[#4B5563] p-[5px] ": null}`}/></button>
+                <button className=' mx-3' onClick={()=> {setListView()}}><FaList size={25} className={` duration-500 text-gray-600  ${gridView? null: "text-white bg-[#4B5563] p-[5px]"}`}/></button>
             </div>
             <div className=' p-2'>
-                <h1> {filteredProducts.length} Products found</h1>
+                <h1>{filteredProducts.length} Products found</h1>
             </div>
             <div className=' p-2'>
                 <select onChange={sortProducts} name="sort" id="sort" className='w-[150px] p-3 rounded-lg bg-[#4B5563] text-white font-[10px] hover:bg-white hover:text-[#4B5563] duration-300'>

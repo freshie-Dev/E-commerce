@@ -1,0 +1,2 @@
+12/10/2023, 8:17 pm: clear data when user logs out.
+12/14/2023, 11:20 pm: Save userInfo to localStorage when a use logins or signups.

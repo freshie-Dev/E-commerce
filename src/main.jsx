@@ -5,11 +5,7 @@ import { ProductProvider } from "./context/ProductContext.jsx";
 import { FilterProvider } from "./context/FilterContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
-
-
-
-
-
+import { ValidationProvider } from "./context/InputValidator.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -17,7 +13,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <FilterProvider>
             <CartProvider>
               <UserProvider>
-                <App /> 
+                <ValidationProvider>
+                  <App /> 
+                </ValidationProvider>
               </UserProvider>
             </CartProvider>
         </FilterProvider>

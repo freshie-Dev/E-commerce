@@ -6,7 +6,7 @@ import styled from "styled-components";
 import UserContextProvider from "../../context/UserContext";
 export default function Settings() {
   
-  const {editableInfo} = UserContextProvider();
+  const {editableInfo, clearCredentials, toggle, setToggle} = UserContextProvider();
     const navigate = useNavigate();
   let [trigger, setTrigger] = useState(true);
 
@@ -32,8 +32,9 @@ export default function Settings() {
             <li><NavLink to="/orders">Your Orders</NavLink></li>
             
             <li className="" onClick={() => {
-                localStorage.clear();
+                clearCredentials();
                 navigate("/register");
+                setToggle(false);
               }}>
               Log out
             </li>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import UserStarRating from './UserStarRating'
 
 import styled  from 'styled-components'
-import { HoverButton } from './Styles'
+import { HoverButton } from '../../helpers/Styles'
 import UserContextProvider from '../../context/UserContext'
 import ProductContextProvider from '../../context/ProductContext'
 
